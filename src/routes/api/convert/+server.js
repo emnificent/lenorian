@@ -16,12 +16,13 @@
 // precious help https://howardhinnant.github.io/date_algorithms.html
 // not sure if that helpful since I switched to Milanković's calendar rules
 
-import { json } from '@sveltejs/kit';
+import { json, error } from '@sveltejs/kit';
 
-function fixTimestamp() {
+function fixTimestamp(gregorianDate) {
   const timestampFix = 687484800;
 
-  const unixTimestamp = Math.trunc(new Date().getTime() / 1000);
+  const longUnixTimestamp = gregorianDate ? new Date(gregorianDate).getTime() : Date.now();
+  const unixTimestamp = Math.trunc(longUnixTimestamp / 1000);
   const timestamp = unixTimestamp + timestampFix;
 
   return timestamp;
@@ -126,8 +127,17 @@ function isLeapYear(year) {
   return leapYear;
 }
 
-export function GET() {
-  const timestamp = fixTimestamp();
+export function GET({ url }) {
+  const gregorianDate = url.searchParams.get('gdate');
+  if (gregorianDate &&
+    (!gregorianDate.match(/^\d{4,}-\d{2}-\d{2}$/) || new Date(gregorianDate).toString() === 'Invalid Date')) {
+      throw error(400, {
+        status: 400,
+        message: 'Invalid gdate format, must be YYYY-MM-DD'
+      });
+  }
+
+  const timestamp = fixTimestamp(gregorianDate);
   const daysSinceEpoch = getTotalDays(timestamp);
 
   const { year, yearDay } = getYearAndYearDay(daysSinceEpoch);
@@ -150,5 +160,5 @@ export function GET() {
     yearDay,
   }
 
-  return json(body);
+  return json({ status: 200, message: 'OK', body });
 }
