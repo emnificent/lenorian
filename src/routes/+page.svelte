@@ -1,5 +1,6 @@
 <script>
-	import Convert from "../components/Convert.svelte";
+	import About from "../components/About.svelte";
+  import Convert from "../components/Convert.svelte";
   import Today from "../components/Today.svelte";
 </script>
 
@@ -13,15 +14,19 @@
     <Convert />
   </main>
   <aside>
-
+    <About />
   </aside>
 </div>
 
 <style>
   main {
-    margin-top: 2rem;
+    margin-block: 2rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+  }
+
+  aside {
+    margin-bottom: 2rem;
   }
 </style>

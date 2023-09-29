@@ -1,9 +1,9 @@
 // THERE LIKELY ARE WAYS TO IMPROVE THE CODE, BUT I'M NOT SMART ENOUGH FOR THAT
 
-// Eleanorian: 0000/01/01 - is equivalent to...
-//  Gregorian: 1948/03/20 - spring equinox, the year of the Universal Declaration of Human Rights
+//  Lenorian: 0000/01/01 - is equivalent to...
+// Gregorian: 1948/03/20 - spring equinox, the year of the Universal Declaration of Human Rights
 // Epoch timestamp: -687484800
-// in order to adjust the Unix time so E-0000/01/01's Epoch timestamp is 0, instead of G-1970/01/01, we need to add 687484800 to the Unix time
+// in order to adjust the Unix time so L-0000/01/01's Epoch timestamp is 0, instead of G-1970/01/01, we need to add 687484800 to the Unix time
 
 // 86400 seconds in a day
 // weeks of 8 days, recommended work-week: 4 days
