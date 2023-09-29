@@ -35,7 +35,7 @@
       { /if }
     </div>
 
-    <span class="help__marker"><input type="checkbox" bind:checked={help} id="test"/></span>
+    <span class="help__marker"><input type="checkbox" bind:checked={help}/></span>
   { /if }
 </section>
 

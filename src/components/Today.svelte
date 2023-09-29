@@ -20,7 +20,7 @@
   { #if help }
     <p class="help" transition:slide>YYYY-MM-DD</p>
   { /if }
-  <span class="help__marker"><input type="checkbox" bind:checked={help} id="test"/></span>
+  <span class="help__marker"><input type="checkbox" bind:checked={help}/></span>
 </article>
 
 <style lang="scss">
