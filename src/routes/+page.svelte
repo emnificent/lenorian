@@ -1,2 +1,14 @@
-<h1>Eleanorian calendar</h1>
-<a href="/api">API Documentation</a>
+<script>
+	import Today from "../components/Today.svelte";
+</script>
+
+<main>
+  <p>Today is...</p>
+  <Today />
+</main>
+
+<style>
+  main {
+    margin-top: 2rem;
+  }
+</style>

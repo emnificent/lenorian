@@ -5,6 +5,7 @@
 <h3>optional parameter</h3>
 <p>gdate — convert specific Gregorian date (YYYY-MM-DD), otherwise uses today (UTC)</p>
 <h2>/calendar</h2>
+<p>/!\ not working yet</p>
 <p>generate calendar for the Eleanorian year</p>
 <p>return JSON</p>
 <h3>optional parameter</h3>
