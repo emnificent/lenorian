@@ -1,14 +1,27 @@
 <script>
-	import Today from "../components/Today.svelte";
+	import Convert from "../components/Convert.svelte";
+  import Today from "../components/Today.svelte";
 </script>
 
-<main>
-  <p>Today is...</p>
-  <Today />
-</main>
+<div>
+  <main>
+    <div>
+      <p>Today is...</p>
+      <Today />
+    </div>
+  
+    <Convert />
+  </main>
+  <aside>
+
+  </aside>
+</div>
 
 <style>
   main {
     margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 </style>
