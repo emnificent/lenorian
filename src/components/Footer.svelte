@@ -4,22 +4,33 @@
 
 <footer> 
   <nav>
+    <a href="/">Home</a>
+    <a href="/feedback">Feedback</a>
     <a href="/api">Developers</a>
   </nav>
   <p> © {year} <a href="https://dev.emnificent.com" target="_blank">emnificent</a></p>
 </footer>
 
 <style lang="scss">
+  a {
+    color: var(--c-dark);
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   p {
     font-size: calc(var(--fs-text--small) * 1rem);
     line-height: 1;
     text-align: center;
     opacity: 0.5;
-  }
 
-  a {
-    text-decoration: none;
-    color: var(--c-dark);
+    & a {
+      text-decoration: none;
+    }
   }
 
   footer {
