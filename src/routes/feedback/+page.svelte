@@ -77,6 +77,7 @@
     & input {
       background-color: var(--c-secondary);
       color: var(--c-dark);
+      transition: background-color 0.3s, color 0.3s;
 
       &::placeholder {
         color: var(--c-dark);
@@ -91,6 +92,35 @@
           color: var(--c-light);
         }
       }
+
+      &:hover,
+      &:focus-visible {
+        background-color: var(--c-tertiary);
+        color: var(--c-light);
+
+        &::placeholder {
+          color: var(--c-light);
+        }
+
+        @media (prefers-color-scheme: dark) {
+          background-color: var(--c-secondary);
+          color: var(--c-dark);
+
+          &::placeholder {
+            color: var(--c-dark);
+          }
+        }
+      }
+
+      &:focus-visible {
+        outline-offset: 0.25rem;
+        outline: var(--c-tertiary) 2px solid;
+        border-radius: 0.25rem;
+
+		    @media (prefers-color-scheme: dark) {
+			    outline-color: var(--c-secondary);
+		    }
+      }
     }
 
     & textarea {
@@ -100,10 +130,30 @@
     & button {
       background-color: var(--c-tertiary);
       color: var(--c-light);
+      transition: background-color 0.3s;
 
       @media (prefers-color-scheme: dark) {
         background-color: var(--c-secondary);
         color: var(--c-dark);
+      }
+
+      &:hover,
+      &:focus-visible {
+        background-color: var(--c-dark);
+
+        @media (prefers-color-scheme: dark) {
+          background-color: var(--c-primary);
+        }
+      }
+
+      &:focus-visible {
+        outline-offset: 0.25rem;
+        outline: var(--c-dark) 2px solid;
+        border-radius: 0.25rem;
+
+		    @media (prefers-color-scheme: dark) {
+			    outline-color: var(--c-primary);
+		    }
       }
     }
 

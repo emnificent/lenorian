@@ -52,6 +52,7 @@
       width: 1.5rem;
       aspect-ratio: 1/1;
       opacity: 0;
+      outline: none;
 
       &:focus-visible {
         opacity: 1;
@@ -71,6 +72,32 @@
       background-color:var(--c-secondary);
       color: var(--c-dark);
       font-size: calc(var(--fs-text--small) * 1rem);
+      transition: all 0.3s;
+    }
+
+    &:hover,
+    &:focus-within {
+      &::after {
+        background-color: var(--c-tertiary);
+        color: var(--c-light);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        &::after {
+          background-color: var(--c-primary);
+          color: var(--c-dark);
+        }
+      }
+    }
+
+    &:focus-within {
+      outline-offset: 0.25rem;
+      outline: var(--c-tertiary) 2px solid;
+      border-radius: 0.25rem;
+
+      @media (prefers-color-scheme: dark) {
+        outline-color: var(--c-primary);
+      }
     }
   }
 
