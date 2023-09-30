@@ -20,6 +20,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media screen and (width >= 768px) {
+      display: grid;
+      grid-template: auto / repeat(3, 1fr);
+      justify-items: center;
+      gap: 2rem;
+
+      & a:nth-child(1) {
+        justify-self: end;
+      }
+    }
   }
 
   p {
@@ -44,6 +55,16 @@
     /* make the footer color fill the page horizontally */
     padding-inline: 1rem;
     margin-inline: -1rem;
+
+    @media screen and (width >= 768px) {
+      padding-inline: 1.5rem;
+      margin-inline: -1.5rem;
+    }
+
+    @media screen and (width >= 1200px) {
+      padding-inline: 62500rem;
+      margin-inline: -62500rem;
+    }
 
     /* everything below puts the footer where it belongs */
     margin-top: auto;
