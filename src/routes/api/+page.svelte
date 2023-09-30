@@ -191,10 +191,6 @@
       padding: 1rem;
       border-radius: 1rem;
       overflow-x: auto;
-
-      @media (prefers-color-scheme: dark) {
-        background-color: var(--c-tertiary);
-      }
     }
   }
 
@@ -209,7 +205,7 @@
       border-collapse: collapse;
 
       @media (prefers-color-scheme: dark) {
-        background-color: var(--c-tertiary);
+        background-color: var(--c-dark);
       }
     }
 
@@ -236,7 +232,7 @@
       background-color: var(--c-secondary);
 
       @media (prefers-color-scheme: dark) {
-        background-color: var(--c-tertiary);
+        background-color: var(--c-dark);
       }
     }
   }

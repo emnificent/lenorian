@@ -8,6 +8,7 @@
 	--c-secondary: hsl(30, 50%, 59%);
 	--c-tertiary: hsl(26, 58%, 29%);
 	--c-dark: hsl(26, 50%, 13%);
+	--c-black: hsl(0, 0%, 9%);
 
 	// breakpoints (mobile-first) (px)
 	// calc(var(--bp) * 1px)
@@ -34,7 +35,7 @@
 	line-height: 1.4;
 
 	@media (prefers-color-scheme: dark) {
-		background-color: var(--c-dark);
+		background-color: var(--c-black);
 		color: var(--c-light);
 	}
 }

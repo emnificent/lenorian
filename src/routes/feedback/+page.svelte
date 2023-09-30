@@ -60,8 +60,7 @@
     border-radius: 1rem;
 
     @media (prefers-color-scheme: dark) {
-      background-color: var(--c-secondary);
-      color: var(--c-dark);
+      background-color: var(--c-dark);
     }
 
     & select,
@@ -76,7 +75,7 @@
     & select,
     & textarea,
     & input {
-      background-color: var(--c-tertiary);
+      background-color: var(--c-secondary);
       color: var(--c-dark);
 
       &::placeholder {
@@ -85,6 +84,7 @@
       }
 
       @media (prefers-color-scheme: dark) {
+        background-color: var(--c-tertiary);
         color: var(--c-light);
 
         &::placeholder {
@@ -102,7 +102,7 @@
       color: var(--c-light);
 
       @media (prefers-color-scheme: dark) {
-        background-color: var(--c-primary);
+        background-color: var(--c-secondary);
         color: var(--c-dark);
       }
     }

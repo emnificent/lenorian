@@ -15,8 +15,18 @@
   a {
     color: var(--c-dark);
 
+    &:hover,
+    &:focus {
+      text-decoration-color: var(--c-dark);
+    }
+
     @media (prefers-color-scheme: dark) {
       color: var(--c-primary);
+
+      &:hover,
+      &:focus {
+        text-decoration-color: var(--c-primary);
+      }
     }
   }
 
@@ -61,7 +71,7 @@
     background-color: var(--c-secondary);
 
     @media (prefers-color-scheme: dark) {
-      background-color: var(--c-tertiary);
+      background-color: var(--c-dark);
     }
 
     /* make the footer color fill the page horizontally */

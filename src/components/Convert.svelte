@@ -50,7 +50,7 @@
     gap: 0.5rem;
 
     @media (prefers-color-scheme: dark) {
-      background-color: var(--c-tertiary);
+      background-color: var(--c-dark);
     }
 
     & h2 {
@@ -70,6 +70,11 @@
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
       border: none;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: var(--c-tertiary);
+        color: var(--c-light);
+      }
     }
 
     & button {
@@ -80,7 +85,7 @@
       border: none;
 
       @media (prefers-color-scheme: dark) {
-        background-color: var(--c-primary);
+        background-color: var(--c-secondary);
         color: var(--c-dark);
       }
     }
@@ -117,12 +122,6 @@
       background-color:var(--c-secondary);
       color: var(--c-dark);
       font-size: calc(var(--fs-text--small) * 1rem);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      &::after {
-        background-color: var(--c-primary);
-      }
     }
   }
 
