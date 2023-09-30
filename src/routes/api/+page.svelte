@@ -191,6 +191,10 @@
       padding: 1rem;
       border-radius: 1rem;
       overflow-x: auto;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: var(--c-tertiary);
+      }
     }
   }
 
@@ -203,6 +207,10 @@
       background-color: var(--c-primary);
       padding: 1rem;
       border-collapse: collapse;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: var(--c-tertiary);
+      }
     }
 
     & th {
@@ -212,6 +220,11 @@
       background-color: var(--c-tertiary);
       color: var(--c-light);
       padding: 0.5rem 1rem;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: var(--c-secondary);
+        color: var(--c-dark);
+      }
     }
 
     & td {
@@ -221,6 +234,10 @@
 
     & tr:nth-child(odd) {
       background-color: var(--c-secondary);
+
+      @media (prefers-color-scheme: dark) {
+        background-color: var(--c-tertiary);
+      }
     }
   }
 </style>

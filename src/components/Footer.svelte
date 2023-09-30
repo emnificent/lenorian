@@ -14,6 +14,10 @@
 <style lang="scss">
   a {
     color: var(--c-dark);
+
+    @media (prefers-color-scheme: dark) {
+      color: var(--c-primary);
+    }
   }
 
   nav {
@@ -41,6 +45,10 @@
 
     & a {
       text-decoration: none;
+
+      @media (prefers-color-scheme: dark) {
+        color: var(--c-light);
+      }
     }
   }
 
@@ -51,6 +59,10 @@
     align-items: center;
     gap: 1rem;
     background-color: var(--c-secondary);
+
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--c-tertiary);
+    }
 
     /* make the footer color fill the page horizontally */
     padding-inline: 1rem;

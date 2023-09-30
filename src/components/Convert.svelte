@@ -49,6 +49,10 @@
     flex-direction: column;
     gap: 0.5rem;
 
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--c-tertiary);
+    }
+
     & h2 {
       font-size: calc(var(--fs-title--small) * 1rem);
       font-weight: var(--fw--bold);
@@ -74,6 +78,11 @@
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
       border: none;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: var(--c-primary);
+        color: var(--c-dark);
+      }
     }
   }
 
@@ -101,6 +110,12 @@
       background-color:var(--c-secondary);
       color: var(--c-dark);
       font-size: calc(var(--fs-text--small) * 1rem);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      &::after {
+        background-color: var(--c-primary);
+      }
     }
   }
 

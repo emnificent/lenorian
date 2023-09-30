@@ -28,6 +28,10 @@
       align-items: center;
       color: var(--c-dark);
       text-decoration: none;
+
+      @media (prefers-color-scheme: dark) {
+        color: var(--c-light);
+      }
     }
 
     & .temporary {

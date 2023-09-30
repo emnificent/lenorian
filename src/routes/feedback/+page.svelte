@@ -59,6 +59,11 @@
     padding: 1rem;
     border-radius: 1rem;
 
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--c-secondary);
+      color: var(--c-dark);
+    }
+
     & select,
     & textarea,
     & input,
@@ -71,12 +76,20 @@
     & select,
     & textarea,
     & input {
-      background-color: var(--c-secondary);
+      background-color: var(--c-tertiary);
       color: var(--c-dark);
 
       &::placeholder {
         color: var(--c-dark);
         opacity: 0.5;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        color: var(--c-light);
+
+        &::placeholder {
+          color: var(--c-light);
+        }
       }
     }
 
@@ -87,6 +100,11 @@
     & button {
       background-color: var(--c-tertiary);
       color: var(--c-light);
+
+      @media (prefers-color-scheme: dark) {
+        background-color: var(--c-primary);
+        color: var(--c-dark);
+      }
     }
 
     & label {
