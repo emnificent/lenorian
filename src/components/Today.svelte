@@ -43,20 +43,27 @@
   .help__marker {
     position: absolute;
     display: flex;
-    bottom: 1.125rem;
-    right: 1.125rem;
+    bottom: 1rem;
+    right: 1rem;
     pointer-events: none;
 
     & input {
       pointer-events: auto;
+      width: 1.5rem;
+      aspect-ratio: 1/1;
+      opacity: 0;
+
+      &:focus-visible {
+        opacity: 1;
+      }
     }
 
     &::after {
       content: "?";
       display: block;
       position: absolute;
-      right: -0.25rem;
-      top: -0.25rem;
+      right: 0;
+      top: 0;
       text-align: center;
       height: 1.5rem;
       aspect-ratio: 1/1;
