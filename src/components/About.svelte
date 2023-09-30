@@ -1,18 +1,16 @@
 <section>
   <h2>About</h2>
-  <p>The first day of the Lenorian calendar is on the 20th of March 1948, the spring equinox, the year of the Universal Declaration of Human Rights.</p>
+  <p>The first day of the Lenorian calendar is on the 20th of March 1948 (Gregorian calendar), the spring equinox, the year of the Universal Declaration of Human Rights.</p>
 
   <h3>Leap years rule</h3>
-  <p>Each year is made out of 365 days, except for leap years with one extra day added to the end of the last month.</p>
+  <p>Each year is made out of 365 days, except for leap years that have one extra day added to the end of the last month of the year.</p>
   <p>Year 0 and years divisible by 4 are leap years, except if they're also divisible by 100, then they're common years, except if when divided by 900 the remainder is 200 or 600, then they're leap years (Milutin Milanković rule).</p>
 
   <h3>Composition</h3>
-  <p>There are 12 months of 30 or 31 days, the first month has 30 days, the second 31, alternating this way until the last month.</p>
+  <p>There are 12 months of 30 or 31 days, the first month has 30 days, the second 31, alternating this way until the last month that has either 30 or 31 days.</p>
   <p>There are 8 days in a week, so it's easier to divide it in two.</p>
 
   <h3>Days and months names</h3>
-  <p>Names are derived from Latin.</p>
-
   <div class="about-names">
     <div>
       <h4>Week days:</h4>

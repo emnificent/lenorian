@@ -1,13 +1,3 @@
-<script>
-  import { onMount } from "svelte";
-
-  let today;
-  onMount(async () => {
-    const response = await fetch('/api/convert');
-    today = await response.json();
-  });
-</script>
-
 <main>
   <h2>API Documentation</h2>
   <article>
@@ -24,20 +14,21 @@
   "status": 200,
   "message": "OK",
   "body": {
-    "year": 75,
+    "timezone": "local"
+    "year": 0,
+    "yearDay": 265,
+    "leapYear": true,
     "month": {
-      "id": 6,
-      "name": "Tresem"
+      "id": 8,
+      "name": "Treter"
     },
-    "monthDay": 10,
+    "monthDay": 21,
     "weekDay": {
-      "id": 3,
-      "name": "Quartidi"
+      "id": 1,
+      "name": "Secundi"
     },
-    "shortDate": "0075-07-11",
-    "fullDate": "Quartidi 11 Tresem 75",
-    "leapYear": false,
-    "yearDay": 193
+    "shortDate": "0000-09-22",
+    "fullDate": "Secundi 22 Treter 0"
   }
 }`}</code></pre>
     </div>
@@ -58,6 +49,18 @@
             <td><code>YYYY-MM-DD</code></td>
             <td>Convert a Gregorian date to a Lenorian date using the UTC timezone</td>
           </tr>
+          <tr>
+            <td><code>time</code> ⚠️</td>
+            <td>Integer</td>
+            <td><code>Unix time</code></td>
+            <td>Convert an Unix timestamp to a Lenorian date using the local timezone</td>
+          </tr>
+          <tr>
+            <td><code>utc</code> ⚠️</td>
+            <td>Boolean</td>
+            <td></td>
+            <td>Switch from local timezone conversions to UTC timezone conversions</td>
+          </tr>
         </table>
       </div>
     </div>
@@ -72,9 +75,24 @@
             <th>Range / Format</th>
           </tr>
           <tr>
+            <td><code>timezone</code></td>
+            <td>String</td>
+            <td><code>local</code> / <code>utc</code></td>
+          </tr>
+          <tr>
             <td><code>year</code></td>
             <td>Integer</td>
             <td><code>[ -&infin; ; &infin; ]</code></td>
+          </tr>
+          <tr>
+            <td><code>yearDay</code></td>
+            <td>Integer</td>
+            <td><code>[ 0 ; 365 ]</code></td>
+          </tr>
+          <tr>
+            <td><code>leapYear</code></td>
+            <td>Boolean</td>
+            <td></td>
           </tr>
           <tr>
             <td><code>month.id</code></td>
@@ -90,16 +108,6 @@
             <td><code>weekDay.id</code></td>
             <td>Integer</td>
             <td><code>[ 0 ; 7 ]</code></td>
-          </tr>
-          <tr>
-            <td><code>yearDay</code></td>
-            <td>Integer</td>
-            <td><code>[ 0 ; 365 ]</code></td>
-          </tr>
-          <tr>
-            <td><code>leapYear</code></td>
-            <td>Boolean</td>
-            <td></td>
           </tr>
           <tr>
             <td><code>shortDate</code></td>
@@ -209,6 +217,10 @@
     & td {
       padding: 0.5rem 1rem;
       white-space: nowrap;
+    }
+
+    & tr:nth-child(odd) {
+      background-color: var(--c-secondary);
     }
   }
 </style>

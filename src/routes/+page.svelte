@@ -42,7 +42,7 @@
       }
 
       & aside {
-        max-width: 20rem;
+        max-width: 21rem;
         margin-block: 2rem;
       }
     }
