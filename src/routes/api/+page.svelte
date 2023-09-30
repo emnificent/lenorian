@@ -56,14 +56,14 @@
             <td><code>gdate</code></td>
             <td>Date</td>
             <td><code>YYYY-MM-DD</code></td>
-            <td>Convert a Gregorian date to a Lenorian date, uses UTC timezone</td>
+            <td>Convert a Gregorian date to a Lenorian date using the UTC timezone</td>
           </tr>
         </table>
       </div>
     </div>
 
     <div>
-      <h4>Body fields details</h4>
+      <h4>Response body fields details</h4>
       <div class="table">
         <table>
           <tr>
@@ -119,7 +119,7 @@
   <article>
     <div>
       <h3><code>/calendar</code></h3>
-      <p>Generate a calendar for the current Lenorian year</p>
+      <p>Generate the Lenorian calendar for the current Lenorian year</p>
       <p>⚠️ Doesn't work yet</p>
     </div>
 
@@ -137,7 +137,7 @@
             <td><code>year</code></td>
             <td>Integer</td>
             <td></td>
-            <td>Generate the Lenorian calendar for the specified year</td>
+            <td>Generate the Lenorian calendar for the specified Lenorian year</td>
           </tr>
         </table>
       </div>
@@ -155,7 +155,7 @@
     & h2 {
       font-size: calc(var(--fs-title--small) * 1rem);
       font-weight: var(--fw--bold);
-      margin-bottom: -1rem;
+      margin-bottom: -2rem;
     }
 
     & article {
@@ -208,7 +208,7 @@
 
     & td {
       padding: 0.5rem 1rem;
-      text-wrap: nowrap;
+      white-space: nowrap;
     }
   }
 </style>
