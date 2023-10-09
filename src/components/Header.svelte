@@ -38,7 +38,7 @@
       display: block;
       width: 4rem;
       aspect-ratio: 1/1;
-      background-color: var(--c-tertiary);
+      background-color: var(--c-secondary--dark);
       border-radius: 50%;
     }
 

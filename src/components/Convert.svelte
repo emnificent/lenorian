@@ -41,7 +41,7 @@
 
 <style lang="scss">
   section {
-    background-color: var(--c-primary);
+    background-color: var(--c-primary--light);
     padding: 1rem;
     border-radius: 1rem;
     position: relative;
@@ -50,7 +50,7 @@
     gap: 0.5rem;
 
     @media (prefers-color-scheme: dark) {
-      background-color: var(--c-dark);
+      background-color: var(--c-primary--dark);
     }
 
     & h2 {
@@ -65,69 +65,48 @@
     align-items: center;
 
     & input {
-      background-color: var(--c-secondary);
+      background-color: var(--c-light);
       color: var(--c-dark);
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
       border: none;
-      transition: background-color 0.3s, color 0.3s;
 
       @media (prefers-color-scheme: dark) {
-        background-color: var(--c-tertiary);
+        background-color: var(--c-dark);
         color: var(--c-light);
       }
 
-      &:hover,
       &:focus-visible {
-        background-color: var(--c-tertiary);
-        color: var(--c-light);
-
-        @media (prefers-color-scheme: dark) {
-          background-color: var(--c-secondary);
-          color: var(--c-dark);
-        }
-      }
-
-      &:focus-visible {
-        outline-offset: 0.25rem;
-        outline: var(--c-tertiary) 2px solid;
+        outline: var(--c-secondary--dark) 2px solid;
         border-radius: 0.25rem;
 
 		    @media (prefers-color-scheme: dark) {
-			    outline-color: var(--c-secondary);
+			    outline-color: var(--c-secondary--light);
 		    }
       }
     }
 
     & button {
-      background-color: var(--c-tertiary);
+      background-color: var(--c-secondary--dark);
       color: var(--c-light);
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
       border: none;
-      transition: background-color 0.3s;
-
-      @media (prefers-color-scheme: dark) {
-        background-color: var(--c-secondary);
-        color: var(--c-dark);
-      }
+      transition: background-color 0.3s, color 0.3s;
 
       &:hover,
       &:focus-visible {
-        background-color: var(--c-dark);
-
-        @media (prefers-color-scheme: dark) {
-          background-color: var(--c-primary);
-        }
+        background-color: var(--c-secondary--light);
+        color: var(--c-dark);
       }
 
       &:focus-visible {
         outline-offset: 0.25rem;
-        outline: var(--c-dark) 2px solid;
+        outline: var(--c-primary--dark) 2px solid;
         border-radius: 0.25rem;
 
 		    @media (prefers-color-scheme: dark) {
-			    outline-color: var(--c-primary);
+			    outline-color: var(--c-primary--light);
 		    }
       }
     }
@@ -162,8 +141,8 @@
       height: 1.5rem;
       aspect-ratio: 1/1;
       border-radius: 50%;
-      background-color:var(--c-secondary);
-      color: var(--c-dark);
+      background-color:var(--c-secondary--dark);
+      color: var(--c-light);
       font-size: calc(var(--fs-text--small) * 1rem);
       transition: all 0.3s;
     }
@@ -171,25 +150,18 @@
     &:hover,
     &:focus-within {
       &::after {
-        background-color: var(--c-tertiary);
-        color: var(--c-light);
-      }
-
-      @media (prefers-color-scheme: dark) {
-        &::after {
-          background-color: var(--c-primary);
-          color: var(--c-dark);
-        }
+        background-color: var(--c-secondary--light);
+        color: var(--c-dark);
       }
     }
 
     &:focus-within {
       outline-offset: 0.25rem;
-      outline: var(--c-tertiary) 2px solid;
+      outline: var(--c-primary--dark) 2px solid;
       border-radius: 0.25rem;
 
       @media (prefers-color-scheme: dark) {
-        outline-color: var(--c-primary);
+        outline-color: var(--c-primary--light);
       }
     }
   }

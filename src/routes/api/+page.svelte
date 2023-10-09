@@ -186,11 +186,16 @@
     }
 
     & pre {
-      background-color: var(--c-dark);
-      color: var(--c-light);
+      background-color: var(--c-primary--light);
+      color: var(--c-dark);
       padding: 1rem;
       border-radius: 1rem;
       overflow-x: auto;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: var(--c-primary--dark);
+        color: var(--c-light);
+      }
     }
   }
 
@@ -200,12 +205,12 @@
 
     & table {
       width: 100%;
-      background-color: var(--c-primary);
+      background-color: var(--c-primary--light);
       padding: 1rem;
       border-collapse: collapse;
 
       @media (prefers-color-scheme: dark) {
-        background-color: var(--c-dark);
+        background-color: var(--c-primary--dark);
       }
     }
 
@@ -213,12 +218,11 @@
       text-align: start;
       font-weight: var(--fw--bold);
       text-transform: uppercase;
-      background-color: var(--c-tertiary);
+      background-color: var(--c-secondary--dark);
       color: var(--c-light);
       padding: 0.5rem 1rem;
 
       @media (prefers-color-scheme: dark) {
-        background-color: var(--c-secondary);
         color: var(--c-dark);
       }
     }
@@ -229,11 +233,7 @@
     }
 
     & tr:nth-child(odd) {
-      background-color: var(--c-secondary);
-
-      @media (prefers-color-scheme: dark) {
-        background-color: var(--c-dark);
-      }
+      backdrop-filter: invert(5%);
     }
   }
 </style>

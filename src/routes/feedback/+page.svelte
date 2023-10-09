@@ -55,12 +55,12 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    background-color: var(--c-primary);
+    background-color: var(--c-primary--light);
     padding: 1rem;
     border-radius: 1rem;
 
     @media (prefers-color-scheme: dark) {
-      background-color: var(--c-dark);
+      background-color: var(--c-primary--dark);
     }
 
     & select,
@@ -75,9 +75,8 @@
     & select,
     & textarea,
     & input {
-      background-color: var(--c-secondary);
+      background-color: var(--c-light);
       color: var(--c-dark);
-      transition: background-color 0.3s, color 0.3s;
 
       &::placeholder {
         color: var(--c-dark);
@@ -85,7 +84,7 @@
       }
 
       @media (prefers-color-scheme: dark) {
-        background-color: var(--c-tertiary);
+        background-color: var(--c-dark);
         color: var(--c-light);
 
         &::placeholder {
@@ -93,32 +92,12 @@
         }
       }
 
-      &:hover,
       &:focus-visible {
-        background-color: var(--c-tertiary);
-        color: var(--c-light);
-
-        &::placeholder {
-          color: var(--c-light);
-        }
-
-        @media (prefers-color-scheme: dark) {
-          background-color: var(--c-secondary);
-          color: var(--c-dark);
-
-          &::placeholder {
-            color: var(--c-dark);
-          }
-        }
-      }
-
-      &:focus-visible {
-        outline-offset: 0.25rem;
-        outline: var(--c-tertiary) 2px solid;
+        outline: var(--c-secondary--dark) 2px solid;
         border-radius: 0.25rem;
 
 		    @media (prefers-color-scheme: dark) {
-			    outline-color: var(--c-secondary);
+			    outline-color: var(--c-secondary--light);
 		    }
       }
     }
@@ -128,31 +107,23 @@
     }
 
     & button {
-      background-color: var(--c-tertiary);
+      background-color: var(--c-secondary--dark);
       color: var(--c-light);
-      transition: background-color 0.3s;
-
-      @media (prefers-color-scheme: dark) {
-        background-color: var(--c-secondary);
-        color: var(--c-dark);
-      }
+      transition: background-color 0.3s, color 0.3s;
 
       &:hover,
       &:focus-visible {
-        background-color: var(--c-dark);
-
-        @media (prefers-color-scheme: dark) {
-          background-color: var(--c-primary);
-        }
+        background-color: var(--c-secondary--light);
+        color: var(--c-dark);
       }
 
       &:focus-visible {
         outline-offset: 0.25rem;
-        outline: var(--c-dark) 2px solid;
+        outline: var(--c-primary--dark) 2px solid;
         border-radius: 0.25rem;
 
 		    @media (prefers-color-scheme: dark) {
-			    outline-color: var(--c-primary);
+			    outline-color: var(--c-primary--light);
 		    }
       }
     }

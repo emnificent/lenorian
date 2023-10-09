@@ -11,6 +11,7 @@
   <p>There are 8 days in a week, so it's easier to divide it in two.</p>
 
   <h3>Days and months names</h3>
+  <p>Not set in stone, suggest yours through the <a href="/feedback">feedback form</a>!</p>
   <div class="about-names">
     <div>
       <h4>Week days:</h4>
