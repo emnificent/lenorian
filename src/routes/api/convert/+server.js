@@ -18,11 +18,26 @@
 
 import { json, error } from '@sveltejs/kit';
 
-function fixTimestamp(gregorianDate) {
-  const timestampFix = 687484800;
+function getUnixTimestamp(dateTimestamp, utcConversion, gregorianDate) {
+  const currentDate = new Date();
+  let longUnixTimestamp = currentDate.getTime();
 
-  const longUnixTimestamp = gregorianDate ? new Date(gregorianDate).getTime() : Date.now();
+  // dateTimestamp is in seconds
+  if (dateTimestamp) longUnixTimestamp = parseInt(dateTimestamp) * 1000;
+
+  // .getTimezoneOffset() returns the offset in minutes, there are 60000 milliseconds in a minute
+  if (!utcConversion) longUnixTimestamp += currentDate.getTimezoneOffset() * 60000;
+
+  if (gregorianDate) longUnixTimestamp = new Date(gregorianDate).getTime();
+
+  // removes milliseconds
   const unixTimestamp = Math.trunc(longUnixTimestamp / 1000);
+
+  return unixTimestamp;
+}
+
+function fixTimestamp(unixTimestamp) {
+  const timestampFix = 687484800;  
   const timestamp = unixTimestamp + timestampFix;
 
   return timestamp;
@@ -31,7 +46,6 @@ function fixTimestamp(gregorianDate) {
 // [0 ; x]
 function getTotalDays(timestamp) {
   const secondsInDay = 86400;
-
   const daysSinceEpoch = Math.floor(timestamp / secondsInDay);
 
   return daysSinceEpoch;
@@ -128,6 +142,17 @@ function isLeapYear(year) {
 }
 
 export function GET({ url }) {
+  let utcConversion = url.searchParams.has('utc');
+  if (url.searchParams.get('utc') === 'false') utcConversion = false;
+
+  const dateTimestamp = url.searchParams.get('time');
+  if (dateTimestamp && isNaN(dateTimestamp)) {
+      throw error(400, {
+        status: 400,
+        message: 'Invalid time format, must be an integer'
+      });
+  }
+
   const gregorianDate = url.searchParams.get('gdate');
   if (gregorianDate &&
     (!gregorianDate.match(/^\d{4,}-\d{2}-\d{2}$/) || new Date(gregorianDate).toString() === 'Invalid Date')) {
@@ -137,7 +162,8 @@ export function GET({ url }) {
       });
   }
 
-  const timestamp = fixTimestamp(gregorianDate);
+  const unixTimestamp = getUnixTimestamp(dateTimestamp, utcConversion, gregorianDate)
+  const timestamp = fixTimestamp(unixTimestamp);
   const daysSinceEpoch = getTotalDays(timestamp);
 
   const { year, yearDay } = getYearAndYearDay(daysSinceEpoch);
@@ -146,9 +172,11 @@ export function GET({ url }) {
   const weekDay = getWeekDay(daysSinceEpoch);
   const leapYear = isLeapYear(year);
 
+  const timezone = (utcConversion || gregorianDate) ? 'utc' : 'local';
   const positiveDate = daysSinceEpoch < 0 ? false : true;
 
   const body = {
+    timezone,
     year,
     month,
     monthDay,

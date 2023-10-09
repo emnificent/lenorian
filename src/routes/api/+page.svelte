@@ -3,8 +3,7 @@
   <article>
     <div>
       <h3><code>/convert</code></h3>
-      <p>Convert the current Gregorian date to the corresponding Lenorian date using the UTC timezone</p>
-      <p>⚠️ Planned update: default to local timezone</p>
+      <p>Convert the current Gregorian date to the corresponding Lenorian date using the local timezone</p>
     </div>
 
     <div>
@@ -34,7 +33,7 @@
     </div>
 
     <div>
-      <h4>Optional query parameter</h4>
+      <h4>Optional query parameters</h4>
       <div class="table">
         <table>
           <tr>
@@ -47,16 +46,16 @@
             <td><code>gdate</code></td>
             <td>Date</td>
             <td><code>YYYY-MM-DD</code></td>
-            <td>Convert a Gregorian date to a Lenorian date using the UTC timezone</td>
+            <td>Convert a Gregorian date to a Lenorian date</td>
           </tr>
           <tr>
-            <td><code>time</code> ⚠️</td>
+            <td><code>time</code></td>
             <td>Integer</td>
             <td><code>Unix time</code></td>
-            <td>Convert an Unix timestamp to a Lenorian date using the local timezone</td>
+            <td>Convert an Unix timestamp (in seconds) to a Lenorian date</td>
           </tr>
           <tr>
-            <td><code>utc</code> ⚠️</td>
+            <td><code>utc</code></td>
             <td>Boolean</td>
             <td></td>
             <td>Switch from local timezone conversions to UTC timezone conversions</td>
