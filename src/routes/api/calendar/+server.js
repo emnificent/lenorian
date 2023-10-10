@@ -84,13 +84,13 @@ function getYearFirstWeekday(year, dayNamesLength) {
 }
 
 function appendHolidays(months) {
-  months[8].monthDays[21].holidays = ['Universal Declaration of Human Rights Day'];
-  months[0].monthDays[0].holidays = ['New Year'];
+  months[0].monthDays[0].day.holiday = 'New Year\'s Day';
+  months[8].monthDays[21].day.holiday = 'Universal Declaration of Human Rights Day';
 }
 
 function appendToday(today, months) {
-  months[today.month.index].monthDays[today.monthDay.index].day.current = true;
   months[today.month.index].month.current = true;
+  months[today.month.index].monthDays[today.monthDay.index].day.current = true;
 }
 
 export async function GET({ url }) {

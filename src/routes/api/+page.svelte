@@ -1,5 +1,9 @@
 <main>
   <h2>API Documentation</h2>
+  <div>
+    <p>Base URL: <code>/api</code></p>
+    <p>The API is accessible through <a href="/feedback">request-only</a>, for now, later we'll require an API key</p>
+  </div>
   <article>
     <div>
       <h3><code><span class="api-verb">GET</span> /convert</code></h3>
@@ -13,21 +17,28 @@
   "status": 200,
   "message": "OK",
   "body": {
-    "timezone": "local"
-    "year": 0,
-    "yearDay": 265,
-    "leapYear": true,
-    "month": {
-      "id": 8,
-      "name": "Treter"
+    "timezone": "local",
+    "year": {
+      "value": 0,
+      "leapYear": true,
+      "totalDays": 366
     },
-    "monthDay": 21,
-    "weekDay": {
-      "id": 1,
+    "month": {
+      "index": 8,
+      "name": "Treter",
+      "value": 9
+    },
+    "monthDay": {
+      "index": 21,
+      "value": 22
+    },
+    "weekday": {
+      "index": 1,
       "name": "Secundi"
     },
     "shortDate": "0000-09-22",
-    "fullDate": "Secundi 22 Treter 0"
+    "fullDate": "Secundi 22 Treter 0",
+    "yearDay": 265
   }
 }`}</code></pre>
     </div>
@@ -71,52 +82,82 @@
           <tr>
             <th>Field</th>
             <th>Type</th>
-            <th>Range / Format</th>
+            <th>Range</th>
+            <th>Value</th>
+            <th>Format</th>
           </tr>
           <tr>
             <td><code>timezone</code></td>
             <td>String</td>
+            <td></td>
             <td><code>local</code> / <code>utc</code></td>
           </tr>
           <tr>
-            <td><code>year</code></td>
+            <td><code>year.value</code></td>
             <td>Integer</td>
             <td><code>[ -&infin; ; &infin; ]</code></td>
           </tr>
           <tr>
-            <td><code>yearDay</code></td>
-            <td>Integer</td>
-            <td><code>[ 0 ; 365 ]</code></td>
-          </tr>
-          <tr>
-            <td><code>leapYear</code></td>
+            <td><code>year.leapYear</code></td>
             <td>Boolean</td>
-            <td></td>
           </tr>
           <tr>
-            <td><code>month.id</code></td>
+            <td><code>year.totalDays</code></td>
+            <td>Integer</td>
+            <td></td>
+            <td><code>365</code> or <code>366</code></td>
+          </tr>
+          <tr>
+            <td><code>month.index</code></td>
             <td>Integer</td>
             <td><code>[ 0 ; 11 ]</code></td>
           </tr>
           <tr>
-            <td><code>monthDay</code></td>
+            <td><code>month.value</code></td>
+            <td>Integer</td>
+            <td><code>[ 1 ; 12 ]</code></td>
+          </tr>
+          <tr>
+            <td><code>month.name</code></td>
+            <td>String</td>
+          </tr>
+          <tr>
+            <td><code>monthDay.index</code></td>
             <td>Integer</td>
             <td><code>[ 0 ; 30 ]</code></td>
           </tr>
           <tr>
-            <td><code>weekDay.id</code></td>
+            <td><code>monthDay.value</code></td>
+            <td>Integer</td>
+            <td><code>[ 1 ; 31 ]</code></td>
+          </tr>
+          <tr>
+            <td><code>weekDay.index</code></td>
             <td>Integer</td>
             <td><code>[ 0 ; 7 ]</code></td>
           </tr>
           <tr>
+            <td><code>weekDay.name</code></td>
+            <td>String</td>
+          </tr>
+          <tr>
             <td><code>shortDate</code></td>
             <td>String</td>
+            <td></td>
+            <td></td>
             <td><code>YYYY-MM-DD</code></td>
           </tr>
           <tr>
             <td><code>fullDate</code></td>
             <td>String</td>
-            <td><code>weekDay day month year</code></td>
+            <td></td>
+            <td></td>
+            <td><code>weekday day month year</code></td>
+          </tr>
+          <tr>
+            <td><code>yearDay</code></td>
+            <td>Integer</td>
+            <td><code>[ 0 ; 365 ]</code></td>
           </tr>
         </table>
       </div>
@@ -136,35 +177,32 @@
   "status": 200,
   "message": "OK",
   "body": {
-    "year": 0,
-    "leapYear": true,
+    "year": {
+      "value": 0,
+      "leapYear": true,
+      "totalDays": 366
+    },
     "months": [
       // ...
       {
-        "name": "Treter",
-        "days": [
+        "month": {
+          "index": 8,
+          "name": "Treter",
+          "value": 9,
+          "current": true
+        },
+        "monthDays": [
           // ...
           {
-            "day": 21,
-            "weekday": {
-              "id": 0,
-              "name": "Primidi"
-            }
-          },
-          {
-            "day": 22,
-            "weekday": {
-              "id": 1,
-              "name": "Secundi"
+            "day": {
+              "index": 21,
+              "value": 22,
+              "current": true,
+              "holiday": "Universal Declaration of Human Rights Day"
             },
-            "holiday": "Universal Declaration of Human Rights Day",
-            "today": true
-          },
-          {
-            "day": 23,
             "weekday": {
-              "id": 2,
-              "name": "Tertidi"
+              "index": 1,
+              "name": "Secundi"
             }
           },
           // ...
@@ -203,42 +241,83 @@
           <tr>
             <th>Field</th>
             <th>Type</th>
-            <th>Range / Format</th>
+            <th>Range / Value</th>
+            <th>Description</th>
           </tr>
           <tr>
-            <td><code>year</code></td>
+            <td><code>year.value</code></td>
             <td>Integer</td>
             <td><code>[ -&infin; ; &infin; ]</code></td>
           </tr>
           <tr>
-            <td><code>leapYear</code></td>
+            <td><code>year.leapYear</code></td>
             <td>Boolean</td>
-            <td></td>
+          </tr>
+          <tr>
+            <td><code>year.totalDays</code></td>
+            <td>Integer</td>
+            <td><code>365</code> or <code>366</code></td>
           </tr>
           <tr>
             <td><code>months</code></td>
             <td>Array</td>
             <td></td>
+            <td><code>months.length</code> equals 12</td>
           </tr>
           <tr>
-            <td><code>days</code></td>
+            <td><code>&nbsp;&nbsp;month.index</code></td>
+            <td>Integer</td>
+            <td><code>[ 0 ; 11 ]</code></td>
+          </tr>
+          <tr>
+            <td><code>&nbsp;&nbsp;month.value</code></td>
+            <td>Integer</td>
+            <td><code>[ 1 ; 12 ]</code></td>
+          </tr>
+          <tr>
+            <td><code>&nbsp;&nbsp;month.name</code></td>
+            <td>String</td>
+          </tr>
+          <tr>
+            <td><code>&nbsp;&nbsp;month.current</code></td>
+            <td>Boolean</td>
+            <td></td>
+            <td>Highlights the current month when applicable</td>
+          </tr>
+          <tr>
+            <td><code>&nbsp;&nbsp;monthDays</code></td>
             <td>Array</td>
             <td></td>
+            <td><code>monthDays.length</code> equals 30 or 31</td>
           </tr>
           <tr>
-            <td><code>weekday.id</code></td>
+            <td><code>&nbsp;&nbsp;&nbsp;&nbsp;day.index</code></td>
+            <td>Integer</td>
+            <td><code>[ 0 ; 30 ]</code></td>
+          </tr>
+          <tr>
+            <td><code>&nbsp;&nbsp;&nbsp;&nbsp;day.value</code></td>
+            <td>Integer</td>
+            <td><code>[ 1 ; 31 ]</code></td>
+          </tr>
+          <tr>
+            <td><code>&nbsp;&nbsp;&nbsp;&nbsp;day.current</code></td>
+            <td>Boolean</td>
+            <td></td>
+            <td>Highlights the current day when applicable</td>
+          </tr>
+          <tr>
+            <td><code>&nbsp;&nbsp;&nbsp;&nbsp;day.holiday</code></td>
+            <td>String</td>
+          </tr>
+          <tr>
+            <td><code>&nbsp;&nbsp;&nbsp;&nbsp;weekday.index</code></td>
             <td>Integer</td>
             <td><code>[ 0 ; 7 ]</code></td>
           </tr>
           <tr>
-            <td><code>today</code></td>
-            <td>Boolean</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><code>holiday</code></td>
+            <td><code>&nbsp;&nbsp;&nbsp;&nbsp;weekday.name</code></td>
             <td>String</td>
-            <td></td>
           </tr>
         </table>
       </div>
@@ -256,7 +335,7 @@
     & h2 {
       font-size: calc(var(--fs-title--small) * 1rem);
       font-weight: var(--fw--bold);
-      margin-bottom: -2rem;
+      margin-bottom: -1rem;
     }
 
     & article {
