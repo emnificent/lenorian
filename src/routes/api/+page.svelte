@@ -127,7 +127,53 @@
     <div>
       <h3><code>/calendar</code></h3>
       <p>Generate the Lenorian calendar for the current Lenorian year</p>
-      <p>⚠️ Doesn't work yet</p>
+    </div>
+
+    <div>
+      <h4>Response</h4>
+
+<pre><code>{`{
+  "status": 200,
+  "message": "OK",
+  "body": {
+    "year": 0,
+    "leapYear": true,
+    "months": [
+      // ...
+      {
+        "name": "Treter",
+        "days": [
+          // ...
+          {
+            "day": 21,
+            "weekday": {
+              "id": 0,
+              "name": "Primidi"
+            }
+          },
+          {
+            "day": 22,
+            "weekday": {
+              "id": 1,
+              "name": "Secundi"
+            },
+            "holiday": "Universal Declaration of Human Rights Day",
+            "today": true
+          },
+          {
+            "day": 23,
+            "weekday": {
+              "id": 2,
+              "name": "Tertidi"
+            }
+          },
+          // ...
+        ]
+      },
+      // ...
+    ]
+  }
+}`}</code></pre>
     </div>
 
     <div>
@@ -145,6 +191,54 @@
             <td>Integer</td>
             <td></td>
             <td>Generate the Lenorian calendar for the specified Lenorian year</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <h4>Response body fields details</h4>
+      <div class="table">
+        <table>
+          <tr>
+            <th>Field</th>
+            <th>Type</th>
+            <th>Range / Format</th>
+          </tr>
+          <tr>
+            <td><code>year</code></td>
+            <td>Integer</td>
+            <td><code>[ -&infin; ; &infin; ]</code></td>
+          </tr>
+          <tr>
+            <td><code>leapYear</code></td>
+            <td>Boolean</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><code>months</code></td>
+            <td>Array</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><code>days</code></td>
+            <td>Array</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><code>weekday.id</code></td>
+            <td>Integer</td>
+            <td><code>[ 0 ; 7 ]</code></td>
+          </tr>
+          <tr>
+            <td><code>today</code></td>
+            <td>Boolean</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><code>holiday</code></td>
+            <td>String</td>
+            <td></td>
           </tr>
         </table>
       </div>
