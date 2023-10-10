@@ -26,7 +26,7 @@ function getUnixTimestamp(dateTimestamp, utcConversion, gregorianDate) {
   if (dateTimestamp) longUnixTimestamp = parseInt(dateTimestamp) * 1000;
 
   // .getTimezoneOffset() returns the offset in minutes, there are 60000 milliseconds in a minute
-  if (!utcConversion) longUnixTimestamp += currentDate.getTimezoneOffset() * 60000;
+  if (!utcConversion) longUnixTimestamp -= currentDate.getTimezoneOffset() * 60000;
 
   if (gregorianDate) longUnixTimestamp = new Date(gregorianDate).getTime();
 
