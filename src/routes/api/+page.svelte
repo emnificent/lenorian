@@ -2,8 +2,8 @@
   <h2>API Documentation</h2>
   <article>
     <div>
-      <h3><code>/convert</code></h3>
-      <p>Convert the current Gregorian date to the corresponding Lenorian date using the local timezone</p>
+      <h3><code><span class="api-verb">GET</span> /convert</code></h3>
+      <p>Convert the current Gregorian date to the corresponding Lenorian date using the server's local timezone</p>
     </div>
 
     <div>
@@ -125,7 +125,7 @@
 
   <article>
     <div>
-      <h3><code>/calendar</code></h3>
+      <h3><code><span class="api-verb">GET</span> /calendar</code></h3>
       <p>Generate the Lenorian calendar for the current Lenorian year</p>
     </div>
 
@@ -267,6 +267,14 @@
 
     & h3 {
       font-weight: var(--fw--bold);
+
+      & .api-verb {
+        display: inline-block;
+        background-color: var(--c-secondary--dark);
+        color: var(--c-light);
+        padding: 0.125rem 0.5rem;
+        border-radius: 0.5rem;
+      }
     }
 
     & h4 {

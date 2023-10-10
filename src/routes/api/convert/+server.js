@@ -1,4 +1,4 @@
-// THERE LIKELY ARE WAYS TO IMPROVE THE CODE, BUT I'M NOT SMART ENOUGH FOR THAT
+// THERE LIKELY ARE WAYS TO OPTIMIZE THE CODE, BUT I'M NOT SMART ENOUGH FOR THAT
 
 //  Lenorian: 0000/01/01 - is equivalent to...
 // Gregorian: 1948/03/20 - spring equinox, the year of the Universal Declaration of Human Rights
@@ -11,14 +11,30 @@
 // 365 days per year, unless leap year...
 // 366 days (+1 day to the last month, regularly 30 days long) if the year is the year 0 or divisible by 4
 // unless year is also divisble by 100, then year = 365 days
-// unless year / 100 mod 9 = 2 or 6, then year = 366 days, thanks Milutin Milanković
-
-// precious help https://howardhinnant.github.io/date_algorithms.html
-// not sure if that helpful since I switched to Milanković's calendar rules
+// unless year / 100 mod 9 = 2 or 6, then year = 366 days (Milutin Milanković rules)
 
 import { json, error } from '@sveltejs/kit';
 
-function getUnixTimestamp(dateTimestamp, utcConversion, gregorianDate) {
+// [0 ; x]
+function getTotalDays(queryParams) {
+  const secondsInDay = 86400;
+
+  const timestamp = fixTimestamp(queryParams);
+  const daysSinceEpoch = Math.floor(timestamp / secondsInDay);
+
+  return daysSinceEpoch;
+}
+
+function fixTimestamp(queryParams) {
+  const timestampFix = 687484800;
+
+  const unixTimestamp = getUnixTimestamp(queryParams)
+  const timestamp = unixTimestamp + timestampFix;
+
+  return timestamp;
+}
+
+function getUnixTimestamp({ dateTimestamp, utcConversion, gregorianDate }) {
   const currentDate = new Date();
   let longUnixTimestamp = currentDate.getTime();
 
@@ -36,31 +52,6 @@ function getUnixTimestamp(dateTimestamp, utcConversion, gregorianDate) {
   return unixTimestamp;
 }
 
-function fixTimestamp(unixTimestamp) {
-  const timestampFix = 687484800;  
-  const timestamp = unixTimestamp + timestampFix;
-
-  return timestamp;
-}
-
-// [0 ; x]
-function getTotalDays(timestamp) {
-  const secondsInDay = 86400;
-  const daysSinceEpoch = Math.floor(timestamp / secondsInDay);
-
-  return daysSinceEpoch;
-}
-
-// [0 ; 7]
-function getWeekDay(daysSinceEpoch) {
-  // if you have better suggestions, feel free
-  const dayNames = ['Primidi', 'Secundi', 'Tertidi', 'Quartidi', 'Cinqidi', 'Sextidi', 'Septidi', 'Octadi'];
-
-  const weekDay = ((daysSinceEpoch % dayNames.length) + dayNames.length) % dayNames.length;
-
-  return { id: weekDay, name: dayNames[weekDay] };
-}
-
 // year: [0 ; x] / yearDay: [0 ; 365]
 function getYearAndYearDay(yearDay) {
   let year = 0;
@@ -68,24 +59,22 @@ function getYearAndYearDay(yearDay) {
   if (yearDay >= 0) {
     while (yearDay >= 365) {
       yearDay -= 365;
-      if (year % 4 === 0) yearDay -= 1;
-      if (year % 100 === 0 && year !== 0) yearDay += 1;
-      if ((year / 100) % 9 === 2 || (year / 100) % 9 === 6) yearDay -= 1;
+      if (isLeapYear(year)) yearDay -= 1;
       year += 1;
     }
 
+    // occasional issue fix
     if (yearDay === -1) {
       year -= 1;
       yearDay = 365;
     }
-
-  } else if (yearDay < 0) {
+  } 
+  else 
+  if (yearDay < 0) {
     while (yearDay < 0) {
       year -= 1;
       yearDay += 365;
-      if (((year % 4) + 4) % 4 === 0) yearDay += 1;
-      if (((year % 100) + 100) % 100 === 0) yearDay -= 1;
-      if ((((year / 100) % 9) + 9) % 9 === 2 || (((year / 100) % 9) + 9) % 9 === 6) yearDay += 1;
+      if (isLeapYear(year)) yearDay += 1;
     }
   }
 
@@ -94,41 +83,51 @@ function getYearAndYearDay(yearDay) {
 
 // [0 ; 11]
 function getMonth(yearDay) {
-  // if you have better suggestions, feel free
+  // better name suggestions welcome
   const monthNames = ['Unisem', 'Unibis', 'Uniter', 'Duosem', 'Duobis', 'Duoter', 'Tresem', 'Trebis', 'Treter', 'Quasem', 'Quabis', 'Quater'];
 
-  let month = 0;
-  if (yearDay > 29) month += 1;
-  if (yearDay > 60) month += 1;
-  if (yearDay > 90) month += 1;
-  if (yearDay > 121) month += 1;
-  if (yearDay > 151) month += 1;
-  if (yearDay > 182) month += 1;
-  if (yearDay > 212) month += 1;
-  if (yearDay > 243) month += 1;
-  if (yearDay > 273) month += 1;
-  if (yearDay > 304) month += 1;
-  if (yearDay > 334) month += 1;
+  let monthIndex = 0;
+  if (yearDay > 29) monthIndex += 1;
+  if (yearDay > 60) monthIndex += 1;
+  if (yearDay > 90) monthIndex += 1;
+  if (yearDay > 121) monthIndex += 1;
+  if (yearDay > 151) monthIndex += 1;
+  if (yearDay > 182) monthIndex += 1;
+  if (yearDay > 212) monthIndex += 1;
+  if (yearDay > 243) monthIndex += 1;
+  if (yearDay > 273) monthIndex += 1;
+  if (yearDay > 304) monthIndex += 1;
+  if (yearDay > 334) monthIndex += 1;
 
-  return { id: month, name: monthNames[month] };
+  return { index: monthIndex, name: monthNames[monthIndex], value: monthIndex + 1 };
 }
 
 // [0 ; 30]
-function getMonthDay(month, monthDay) {
+function getMonthDay(monthIndex, monthDayIndex) {
 
-  if (month > 0) monthDay -= 30;
-  if (month > 1) monthDay -= 31;
-  if (month > 2) monthDay -= 30;
-  if (month > 3) monthDay -= 31;
-  if (month > 4) monthDay -= 30;
-  if (month > 5) monthDay -= 31;
-  if (month > 6) monthDay -= 30;
-  if (month > 7) monthDay -= 31;
-  if (month > 8) monthDay -= 30;
-  if (month > 9) monthDay -= 31;
-  if (month > 10) monthDay -= 30;
+  if (monthIndex > 0) monthDayIndex -= 30;
+  if (monthIndex > 1) monthDayIndex -= 31;
+  if (monthIndex > 2) monthDayIndex -= 30;
+  if (monthIndex > 3) monthDayIndex -= 31;
+  if (monthIndex > 4) monthDayIndex -= 30;
+  if (monthIndex > 5) monthDayIndex -= 31;
+  if (monthIndex > 6) monthDayIndex -= 30;
+  if (monthIndex > 7) monthDayIndex -= 31;
+  if (monthIndex > 8) monthDayIndex -= 30;
+  if (monthIndex > 9) monthDayIndex -= 31;
+  if (monthIndex > 10) monthDayIndex -= 30;
   
-  return monthDay;
+  return { index: monthDayIndex, value: monthDayIndex + 1 };
+}
+
+// [0 ; 7]
+function getWeekday(daysSinceEpoch) {
+  // better name suggestions welcome
+  const dayNames = ['Primidi', 'Secundi', 'Tertidi', 'Quartidi', 'Cinqidi', 'Sextidi', 'Septidi', 'Octadi'];
+
+  const weekdayIndex = ((daysSinceEpoch % dayNames.length) + dayNames.length) % dayNames.length;
+
+  return { index: weekdayIndex, name: dayNames[weekdayIndex] };
 }
 
 function isLeapYear(year) {
@@ -141,7 +140,12 @@ function isLeapYear(year) {
   return leapYear;
 }
 
+function formatPadding(data, padding = 2) {
+  return data.toString().replace('-', '').padStart(padding, '0');
+}
+
 export function GET({ url }) {
+  // query params
   let utcConversion = url.searchParams.has('utc');
   if (url.searchParams.get('utc') === 'false') utcConversion = false;
 
@@ -162,29 +166,32 @@ export function GET({ url }) {
       });
   }
 
-  const unixTimestamp = getUnixTimestamp(dateTimestamp, utcConversion, gregorianDate)
-  const timestamp = fixTimestamp(unixTimestamp);
-  const daysSinceEpoch = getTotalDays(timestamp);
+  // core
+  const queryParams = { dateTimestamp, utcConversion, gregorianDate };
+  const daysSinceEpoch = getTotalDays(queryParams);
 
   const { year, yearDay } = getYearAndYearDay(daysSinceEpoch);
   const month = getMonth(yearDay);
-  const monthDay = getMonthDay(month.id, yearDay);
-  const weekDay = getWeekDay(daysSinceEpoch);
+  const monthDay = getMonthDay(month.index, yearDay);
+  const weekday = getWeekday(daysSinceEpoch);
   const leapYear = isLeapYear(year);
 
   const timezone = (utcConversion || gregorianDate) ? 'utc' : 'local';
-  const positiveDate = daysSinceEpoch < 0 ? false : true;
+  const negativeDate = daysSinceEpoch > 0 ? false : true;
 
   const body = {
     timezone,
-    year,
+    year: {
+      value: year,
+      leapYear,
+      totalDays: leapYear ? 366 : 365,
+    },
     month,
     monthDay,
-    weekDay,
+    weekday,
     shortDate: 
-      `${!positiveDate ? '-' : ''}${year.toString().replace('-', '').padStart(4, '0')}-${(month.id + 1).toString().padStart(2, '0')}-${(monthDay + 1).toString().padStart(2, '0')}`,
-    fullDate: `${weekDay.name} ${monthDay + 1} ${month.name} ${year}`,
-    leapYear,
+      `${negativeDate ? '-' : ''}${formatPadding(year, 4)}-${formatPadding(month.value)}-${formatPadding(monthDay.value)}`,
+    fullDate: `${weekday.name} ${monthDay.value} ${month.name} ${year}`,
     yearDay,
   }
 

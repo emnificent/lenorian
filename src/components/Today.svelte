@@ -14,7 +14,7 @@
 <article>
   <h2>{today?.body.fullDate}</h2>
   { #if help }
-    <p class="help" transition:slide>weekDay day month year</p>
+    <p class="help" transition:slide>weekday day month year</p>
   { /if }
   <p>{today?.body.shortDate}</p>
   { #if help }

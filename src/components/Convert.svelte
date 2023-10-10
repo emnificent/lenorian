@@ -27,7 +27,7 @@
     <div transition:slide>
       <p>{converted?.body.fullDate}</p>
       { #if help }
-        <p class="help" transition:slide>weekDay day month year</p>
+        <p class="help" transition:slide>weekday day month year</p>
       { /if }
       <p>{converted?.body.shortDate}</p>
       { #if help }
