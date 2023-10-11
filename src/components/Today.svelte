@@ -20,6 +20,9 @@
   { #if help }
     <p class="help" transition:slide>YYYY-MM-DD</p>
   { /if }
+  { #if today?.body.holiday }
+    <p class="holiday">{ today.body.holiday }</p>
+  { /if }
   <span class="help__marker"><input type="checkbox" bind:checked={help}/></span>
 </article>
 
@@ -37,6 +40,11 @@
     & h2 {
       font-size: calc(var(--fs-title--small) * 1rem);
       font-weight: var(--fw--bold);
+    }
+
+    & .holiday {
+      margin-top: 1rem;
+      width: calc(100% - 2.5rem);
     }
   }
 

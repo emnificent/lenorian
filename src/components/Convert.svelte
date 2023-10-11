@@ -25,13 +25,16 @@
 
   { #if converted }
     <div transition:slide>
-      <p>{converted?.body.fullDate}</p>
+      <p>{converted.body.fullDate}</p>
       { #if help }
         <p class="help" transition:slide>weekday day month year</p>
       { /if }
-      <p>{converted?.body.shortDate}</p>
+      <p>{converted.body.shortDate}</p>
       { #if help }
         <p class="help" transition:slide>YYYY-MM-DD</p>
+      { /if }
+      { #if converted.body.holiday }
+        <p class="holiday">{ converted.body.holiday }</p>
       { /if }
     </div>
 
@@ -56,6 +59,11 @@
     & h2 {
       font-size: calc(var(--fs-title--small) * 1rem);
       font-weight: var(--fw--bold);
+    }
+
+    & .holiday {
+      margin-top: 1rem;
+      width: calc(100% - 2.5rem);
     }
   }
 

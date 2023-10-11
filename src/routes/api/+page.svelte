@@ -38,6 +38,7 @@
     },
     "shortDate": "0000-09-22",
     "fullDate": "Secundi 22 Treter 0",
+    "holiday": "Universal Declaration of Human Rights Day",
     "yearDay": 265
   }
 }`}</code></pre>
@@ -155,6 +156,10 @@
             <td><code>weekday day month year</code></td>
           </tr>
           <tr>
+            <td><code>holiday</code></td>
+            <td>String</td>
+          </tr>
+          <tr>
             <td><code>yearDay</code></td>
             <td>Integer</td>
             <td><code>[ 0 ; 365 ]</code></td>
@@ -198,7 +203,7 @@
               "index": 21,
               "value": 22,
               "current": true,
-              "holiday": "Universal Declaration of Human Rights Day"
+              "holidays": ["Universal Declaration of Human Rights Day"]
             },
             "weekday": {
               "index": 1,

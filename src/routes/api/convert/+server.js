@@ -140,6 +140,37 @@ function isLeapYear(year) {
   return leapYear;
 }
 
+function getHoliday(month, day, leapYear) {
+  const holidays = {
+    month0: {
+      day0: ['New Year\'s Day']
+    },
+    month1: {
+      day11: ['Labor Day']
+    },
+    month6: {
+      day2: ['World Peace Day']
+    },
+    month8: {
+      day21: ['Universal Declaration of Human Rights Day']
+    },
+    month9: {
+      day2: ['Gratitude Day']
+    },
+    month10: {
+      day25: ['Love Day']
+    },
+    month11: {
+      day30: ['New Year\'s Eve']
+    }
+  };
+
+  // exception for the last day of the year
+  if (month === 11 && !leapYear && day === 29) day = 30;
+
+  return holidays['month' + month]['day' + day] ? holidays['month' + month]['day' + day][0] : null;
+}
+
 function formatPadding(data, padding = 2) {
   return data.toString().replace('-', '').padStart(padding, '0');
 }
@@ -175,6 +206,7 @@ export function GET({ url }) {
   const monthDay = getMonthDay(month.index, yearDay);
   const weekday = getWeekday(daysSinceEpoch);
   const leapYear = isLeapYear(year);
+  const holiday = getHoliday(month.index, monthDay.index, leapYear);
 
   const timezone = (utcConversion || gregorianDate) ? 'utc' : 'local';
   const negativeDate = daysSinceEpoch > 0 ? false : true;
@@ -192,6 +224,7 @@ export function GET({ url }) {
     shortDate: 
       `${negativeDate ? '-' : ''}${formatPadding(year, 4)}-${formatPadding(month.value)}-${formatPadding(monthDay.value)}`,
     fullDate: `${weekday.name} ${monthDay.value} ${month.name} ${year}`,
+    holiday,
     yearDay,
   }
 
