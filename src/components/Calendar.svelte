@@ -34,41 +34,57 @@
               { #each Array.from({ length: monthContainer.monthDays[0].weekday.index }) as empty }
                 <td></td>
               { /each }
+
               { #each Array.from({ length: 8 - monthContainer.monthDays[0].weekday.index }, (value, index) => index) as index }
-                <td class="{ monthContainer.monthDays[0 + index].day.current ? 'current' : '' }">
-                  { monthContainer.monthDays[0 + index].day.value }
+                <td class="{ monthContainer.monthDays[0 + index].day.current ? 'current' : '' }
+                  { monthContainer.monthDays[0 + index].day.holidays ? 'holiday' : '' }"
+                  title="{ monthContainer.monthDays[0 + index].day.holidays?.[0] }">
+
+                    { monthContainer.monthDays[0 + index].day.value }
                 </td>
               { /each }
             </tr>
             <tr>
               { #each Array.from({ length: 8 }, (value, index) => index) as index }
-                <td class="{ monthContainer.monthDays[(8 - monthContainer.monthDays[0].weekday.index) + index].day.current ? 'current' : '' }">
-                  { monthContainer.monthDays[(8 - monthContainer.monthDays[0].weekday.index) + index].day.value }
+                <td class="{ monthContainer.monthDays[(8 - monthContainer.monthDays[0].weekday.index) + index].day.current ? 'current' : '' }
+                  { monthContainer.monthDays[(8 - monthContainer.monthDays[0].weekday.index) + index].day.holidays ? 'holiday' : '' }"
+                  title="{ monthContainer.monthDays[(8 - monthContainer.monthDays[0].weekday.index) + index].day.holidays?.[0] }">
+
+                    { monthContainer.monthDays[(8 - monthContainer.monthDays[0].weekday.index) + index].day.value }
                 </td>
               { /each }
             </tr>
             <tr>
               { #each Array.from({ length: 8 }, (value, index) => index) as index }
-                <td class="{ monthContainer.monthDays[(16 - monthContainer.monthDays[0].weekday.index) + index].day.current ? 'current' : '' }">
-                  { monthContainer.monthDays[(16 - monthContainer.monthDays[0].weekday.index) + index].day.value }
+                <td class="{ monthContainer.monthDays[(16 - monthContainer.monthDays[0].weekday.index) + index].day.current ? 'current' : '' }
+                  { monthContainer.monthDays[(16 - monthContainer.monthDays[0].weekday.index) + index].day.holidays ? 'holiday' : '' }"
+                  title="{ monthContainer.monthDays[(16 - monthContainer.monthDays[0].weekday.index) + index].day.holidays?.[0] }">
+
+                    { monthContainer.monthDays[(16 - monthContainer.monthDays[0].weekday.index) + index].day.value }
                 </td>
               { /each }
             </tr>
             <tr>
               { #each Array.from({ length: 8 }, (value, index) => index) as index }
-                <td class="{ monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]?.day.current ? 'current' : '' }">{
-                  monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]
-                    ? monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]?.day.value 
-                    : ''
+                <td class="{ monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]?.day.current ? 'current' : '' }
+                  { monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]?.day.holidays ? 'holiday' : '' }"
+                  title="{ monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]?.day.holidays?.[0] }">{
+
+                    monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]
+                      ? monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]?.day.value 
+                      : ''
                 }</td>
               { /each }
             </tr>
             <tr>
               { #each Array.from({ length: 8 }, (value, index) => index) as index }
-                <td class="{ monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]?.day.current ? 'current' : '' }">{
-                  monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]
-                    ? monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]?.day.value 
-                    : ''
+                <td class="{ monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]?.day.current ? 'current' : '' }
+                  { monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]?.day.holidays ? 'holiday' : '' }"
+                  title="{ monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]?.day.holidays?.[0] }">{
+
+                    monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]
+                      ? monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]?.day.value 
+                      : ''
                 }</td>
               { /each }
             </tr>
@@ -146,10 +162,38 @@
     & td {
       text-align: center;
 
-      &.current {
-        font-weight: var(--fw--bold);
+      &.holiday {
+        color: var(--c-light);
         position: relative;
         z-index: 0;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 100%;
+          aspect-ratio: 1/1;
+          z-index: -1;
+          border-radius: 1rem;
+          background-color: var(--c-dark);
+          filter: blur(0.25rem);
+        }
+
+        @media (prefers-color-scheme: dark) {
+          color: var(--c-dark);
+
+          &::before {
+            background-color: var(--c-light);
+          }
+        }
+      }
+
+      &.current {
+        color: inherit;
+        font-weight: var(--fw--bold);
+        position: relative;
+        z-index: 1;
 
         &::before {
           content: '';

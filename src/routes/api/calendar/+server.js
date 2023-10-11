@@ -85,11 +85,11 @@ function getYearFirstWeekday(year, dayNamesLength) {
 
 function appendHolidays(months) {
   months[0].monthDays[0].day.holidays = ['New Year\'s Day'];
-  months[1].monthDays[12].day.holidays = ['Labor Day'];
+  months[1].monthDays[11].day.holidays = ['Labor Day'];
   months[6].monthDays[2].day.holidays = ['World Peace Day'];
   // months[7].monthDays[12].day.holidays = ['Halloween'];
   months[8].monthDays[21].day.holidays = ['Universal Declaration of Human Rights Day'];
-  months[9].monthDays[2].day.holidays = 'Gratitude Day';
+  months[9].monthDays[2].day.holidays = ['Gratitude Day'];
   months[10].monthDays[25].day.holidays = ['Love Day'];
   // months[11].monthDays[18].day.holidays = ['Women\'s Day'];
   months[11].monthDays[months[11].monthDays.length - 1].day.holidays = ['New Year\'s Eve'];
