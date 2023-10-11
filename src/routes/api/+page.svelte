@@ -307,8 +307,8 @@
             <td>Highlights the current day when applicable</td>
           </tr>
           <tr>
-            <td><code>&nbsp;&nbsp;&nbsp;&nbsp;day.holiday</code></td>
-            <td>String</td>
+            <td><code>&nbsp;&nbsp;&nbsp;&nbsp;day.holidays</code></td>
+            <td>Array</td>
           </tr>
           <tr>
             <td><code>&nbsp;&nbsp;&nbsp;&nbsp;weekday.index</code></td>

@@ -45,7 +45,7 @@ function generateMonths(leapYear) {
 }
 
 function generateMonthDays(days) {
-  return Array.from({length: days}, (value, index) => value = { 'day': { index, value: index + 1 } });
+  return Array.from({ length: days }, (value, index) => value = { 'day': { index, value: index + 1 } });
 }
 
 function appendWeekdays(year, months) {
@@ -84,8 +84,15 @@ function getYearFirstWeekday(year, dayNamesLength) {
 }
 
 function appendHolidays(months) {
-  months[0].monthDays[0].day.holiday = 'New Year\'s Day';
-  months[8].monthDays[21].day.holiday = 'Universal Declaration of Human Rights Day';
+  months[0].monthDays[0].day.holidays = ['New Year\'s Day'];
+  months[1].monthDays[12].day.holidays = ['Labor Day'];
+  months[6].monthDays[2].day.holidays = ['World Peace Day'];
+  // months[7].monthDays[12].day.holidays = ['Halloween'];
+  months[8].monthDays[21].day.holidays = ['Universal Declaration of Human Rights Day'];
+  months[9].monthDays[2].day.holidays = 'Gratitude Day';
+  months[10].monthDays[25].day.holidays = ['Love Day'];
+  // months[11].monthDays[18].day.holidays = ['Women\'s Day'];
+  months[11].monthDays[months[11].monthDays.length - 1].day.holidays = ['New Year\'s Eve'];
 }
 
 function appendToday(today, months) {
@@ -113,7 +120,7 @@ export async function GET({ url }) {
   appendWeekdays(year, months);
 
   appendHolidays(months);
-  if (!yearParam || today.year === year) appendToday(today, months);
+  if (!yearParam || today.year.value === year) appendToday(today, months);
 
   const body = {
     year: {
