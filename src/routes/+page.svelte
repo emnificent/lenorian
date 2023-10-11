@@ -1,5 +1,6 @@
 <script>
 	import About from "../components/About.svelte";
+	import Calendar from "../components/Calendar.svelte";
   import Convert from "../components/Convert.svelte";
   import Today from "../components/Today.svelte";
 </script>
@@ -12,6 +13,8 @@
     </div>
   
     <Convert />
+
+    <Calendar />
   </main>
   <aside>
     <About />
