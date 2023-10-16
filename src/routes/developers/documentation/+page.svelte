@@ -2,7 +2,7 @@
   <h2>API Documentation</h2>
   <div>
     <p>Base URL: <code>/api</code></p>
-    <p>The API is accessible through <a href="/feedback">request-only</a>, for now, later we'll require an API key</p>
+    <p>For now the API is accessible through <a href="/feedback">request-only</a>, an API key will be required eventually</p>
   </div>
   <article>
     <div>
@@ -203,7 +203,7 @@
               "index": 21,
               "value": 22,
               "current": true,
-              "holidays": ["Universal Declaration of Human Rights Day"]
+              "holiday": "Universal Declaration of Human Rights Day"
             },
             "weekday": {
               "index": 1,
@@ -312,8 +312,8 @@
             <td>Highlights the current day when applicable</td>
           </tr>
           <tr>
-            <td><code>&nbsp;&nbsp;&nbsp;&nbsp;day.holidays</code></td>
-            <td>Array</td>
+            <td><code>&nbsp;&nbsp;&nbsp;&nbsp;day.holiday</code></td>
+            <td>String</td>
           </tr>
           <tr>
             <td><code>&nbsp;&nbsp;&nbsp;&nbsp;weekday.index</code></td>
