@@ -6,7 +6,7 @@
   <nav>
     <a href="/">Home</a>
     <a href="/feedback">Feedback</a>
-    <a href="/api">Developers</a>
+    <a href="/developers/documentation">Developers</a>
   </nav>
   <p> © {year} <a href="https://dev.emnificent.com" target="_blank">emnificent</a></p>
 </footer>

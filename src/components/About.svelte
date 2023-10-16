@@ -27,7 +27,7 @@
       </ol>
     </div>
     <div>
-      <h4>Month days:</h4>
+      <h4>Months:</h4>
       <ol>
         <li>Unisem</li>
         <li>Unibis</li>

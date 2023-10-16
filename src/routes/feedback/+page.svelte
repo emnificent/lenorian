@@ -5,7 +5,7 @@
     <li><h2>Discord</h2></li>
     <li>
       <h2>GitHub</h2>
-      <p>If you have knowledge in SvelteKit feel free to contribute.</p>
+      <p>If you have knowledge in SvelteKit feel free to contribute</p>
     </li>
     <li>
       <h2>Email</h2>
