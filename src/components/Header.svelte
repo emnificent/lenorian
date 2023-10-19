@@ -4,8 +4,8 @@
     <h1>Lenorian calendar</h1>
   </a>
   <nav>
-    <a href="/feedback">Feedback</a>
-    <a href="/developers/documentation">Developers</a>
+    <a href="/contact">Feedback</a>
+    <a href="/developers">Developers</a>
   </nav>
 </header>
 

@@ -2,7 +2,7 @@
   <h2>API Documentation</h2>
   <div>
     <p>Base URL: <code>/api</code></p>
-    <p>For now the API is accessible through <a href="/feedback">request-only</a>, an API key will be required eventually</p>
+    <p>For now the API is accessible through <a href="/contact">request-only</a>, an API key will be required eventually</p>
   </div>
   <article>
     <div>
