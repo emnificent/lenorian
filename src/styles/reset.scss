@@ -15,9 +15,11 @@
   }
 }
 
-// dark mode user-agent-styles
 html {
+  // dark mode user-agent-styles
   color-scheme: light dark;
+  // prevents the content from shifting
+  scrollbar-gutter: stable;
 }
 
 // min body height
