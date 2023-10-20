@@ -1,32 +1,36 @@
+<script>
+  export let form;
+</script>
+
 <main>
-  <p>Whether you don't like the week days' or months' names and would like to suggest your own, or you think something could be done better, there are many ways to reach out:</p>
+  <p>Whether you don't like the week days' or months' names and would like to suggest your own, or you have an idea for a holiday, or something else, reach out:</p>
   
   <ul>
-    <li><h2>Discord</h2></li>
     <li>
-      <h2>GitHub</h2>
-      <p>If you have knowledge in SvelteKit feel free to contribute</p>
-    </li>
-    <li>
-      <h2>Email</h2>
-      <form>
+      <h2>Message</h2>
+      <form method="POST">
         <p>Why are you reaching out?</p>
-        <select name="topic">
+        <select name="topic" required>
           <option value="">Choose an option</option>
-          <option value="naming">Week days / months names</option>
-          <option value="api">API</option>
-          <option value="other">Other</option>
+          <option value="Week days or months names suggestion">Week days / months names</option>
+          <option value="Holiday suggestion">Suggest a holiday</option>
+          <option value="The app appears to be broken">Something appears broken</option>
+          <option value="Other">Other</option>
         </select>
-        <textarea name="message" rows="5" placeholder="Your message, be as specific as possible"></textarea>
-        <p>Only if you wish to hear back, otherwise leave empty:</p>
-        <label>
-          Name: <input type="text" name="name" />
-        </label>
-        <label>
-          Email: <input type="email" name="email" />
-        </label>
+        <textarea name="message" rows="5" placeholder="Your message, be as specific as possible" required></textarea>
         <button>Send</button>
+        { #if form?.success }
+          <p>Thanks for your message!</p>
+        { :else if form?.error }
+          <p>There was an error, try again later.</p>
+        { /if }
       </form>
+    </li>
+
+    <li>
+      <h2>GitHub (soon)</h2>
+      <p>Open an issue to request API access</p>
+      <p>If you have knowledge in SvelteKit feel free to contribute</p>
     </li>
   </ul>
 </main>
@@ -45,9 +49,15 @@
     gap: 1rem;
     list-style: none;
 
+    @media screen and (width >= 768px) {
+      flex-direction: row;
+      gap: 2rem;
+    }
+
     & h2 {
       font-size: calc(var(--fs-title--small) * 1rem);
       font-weight: var(--fw--bold);
+      margin-bottom: 0.25rem;
     }
   }
 
@@ -58,6 +68,7 @@
     background-color: var(--c-primary--light);
     padding: 1rem;
     border-radius: 1rem;
+    max-width: 23rem;
 
     @media (prefers-color-scheme: dark) {
       background-color: var(--c-primary--dark);
