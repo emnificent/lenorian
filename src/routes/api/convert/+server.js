@@ -168,7 +168,7 @@ function getHoliday(month, day, leapYear) {
   // exception for the last day of the year
   if (month === 11 && !leapYear && day === 29) day = 30;
 
-  return holidays['month' + month]['day' + day] ? holidays['month' + month]['day' + day][0] : null;
+  return holidays['month' + month]?.['day' + day] ? holidays['month' + month]['day' + day][0] : null;
 }
 
 function formatPadding(data, padding = 2) {
