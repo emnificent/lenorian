@@ -10,7 +10,10 @@
 
 <article>
   <div class="header">
-    <h2>Calendar</h2>
+    <div class="header__title">
+      <h2>Calendar</h2>
+      <p>(UTC)</p>
+    </div>
     <p>Year {calendar?.body.year.value} {calendar?.body.year.leapYear ? '(leap)': ''}</p>
   </div>
 
@@ -115,6 +118,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+
+    & .header__title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
   }
 

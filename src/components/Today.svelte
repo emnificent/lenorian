@@ -4,7 +4,8 @@
 
   let today;
   onMount(async () => {
-    const response = await fetch('/api/convert');
+    const offset = new Date().getTimezoneOffset();
+    const response = await fetch(`/api/convert?offset=${offset}`);
     today = await response.json();
   });
 
