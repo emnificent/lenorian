@@ -34,15 +34,14 @@ function fixTimestamp(queryParams) {
   return timestamp;
 }
 
-function getUnixTimestamp({ dateTimestamp, utcConversion, gregorianDate }) {
-  const currentDate = new Date();
-  let longUnixTimestamp = currentDate.getTime();
+function getUnixTimestamp({ timezoneOffset, dateTimestamp, gregorianDate }) {
+  let longUnixTimestamp = new Date().getTime();
 
   // dateTimestamp is in seconds
   if (dateTimestamp) longUnixTimestamp = parseInt(dateTimestamp) * 1000;
 
-  // .getTimezoneOffset() returns the offset in minutes, there are 60000 milliseconds in a minute
-  if (!utcConversion) longUnixTimestamp -= currentDate.getTimezoneOffset() * 60000;
+  // timezoneOffset is in minutes
+  if (timezoneOffset) longUnixTimestamp -= timezoneOffset * 60000;
 
   if (gregorianDate) longUnixTimestamp = new Date(gregorianDate).getTime();
 
@@ -177,15 +176,20 @@ function formatPadding(data, padding = 2) {
 
 export function GET({ url }) {
   // query params
-  let utcConversion = url.searchParams.has('utc');
-  if (url.searchParams.get('utc') === 'false') utcConversion = false;
+  const timezoneOffset = url.searchParams.get('offset');
+  if (timezoneOffset && isNaN(timezoneOffset)) {
+    throw error(400, {
+      status: 400,
+      message: 'Invalid timezone offset format, must be an integer'
+    });
+  }
 
   const dateTimestamp = url.searchParams.get('time');
   if (dateTimestamp && isNaN(dateTimestamp)) {
-      throw error(400, {
-        status: 400,
-        message: 'Invalid time format, must be an integer'
-      });
+    throw error(400, {
+      status: 400,
+      message: 'Invalid time format, must be an integer'
+    });
   }
 
   const gregorianDate = url.searchParams.get('gdate');
@@ -198,7 +202,7 @@ export function GET({ url }) {
   }
 
   // core
-  const queryParams = { dateTimestamp, utcConversion, gregorianDate };
+  const queryParams = { timezoneOffset, dateTimestamp, gregorianDate };
   const daysSinceEpoch = getTotalDays(queryParams);
 
   const { year, yearDay } = getYearAndYearDay(daysSinceEpoch);
@@ -208,7 +212,7 @@ export function GET({ url }) {
   const leapYear = isLeapYear(year);
   const holiday = getHoliday(month.index, monthDay.index, leapYear);
 
-  const timezone = (utcConversion || gregorianDate) ? 'utc' : 'local';
+  const timezone = (timezoneOffset && !gregorianDate) ? 'local' : 'utc';
   const negativeDate = daysSinceEpoch > 0 ? false : true;
 
   const body = {

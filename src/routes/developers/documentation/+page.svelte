@@ -7,7 +7,7 @@
   <article>
     <div>
       <h3><code><span class="api-verb">GET</span> /convert</code></h3>
-      <p>Convert the current Gregorian date to the corresponding Lenorian date using the server's local timezone</p>
+      <p>Convert the current Gregorian date to the corresponding Lenorian date using the UTC timezone</p>
     </div>
 
     <div>
@@ -17,7 +17,7 @@
   "status": 200,
   "message": "OK",
   "body": {
-    "timezone": "local",
+    "timezone": "utc",
     "year": {
       "value": 0,
       "leapYear": true,
@@ -58,7 +58,7 @@
             <td><code>gdate</code></td>
             <td>Date</td>
             <td><code>YYYY-MM-DD</code></td>
-            <td>Convert a Gregorian date to a Lenorian date</td>
+            <td>Convert a Gregorian date to a Lenorian date; always uses UTC</td>
           </tr>
           <tr>
             <td><code>time</code></td>
@@ -67,10 +67,10 @@
             <td>Convert an Unix timestamp (in seconds) to a Lenorian date</td>
           </tr>
           <tr>
-            <td><code>utc</code></td>
-            <td>Boolean</td>
+            <td><code>offset</code></td>
+            <td>Integer</td>
             <td></td>
-            <td>Switch from local timezone conversions to UTC timezone conversions</td>
+            <td>Switch to local time by specifying the timezone offset (in minutes) from UTC</td>
           </tr>
         </table>
       </div>
@@ -91,7 +91,7 @@
             <td><code>timezone</code></td>
             <td>String</td>
             <td></td>
-            <td><code>local</code> / <code>utc</code></td>
+            <td><code>utc</code> / <code>local</code></td>
           </tr>
           <tr>
             <td><code>year.value</code></td>
@@ -287,7 +287,7 @@
             <td><code>&nbsp;&nbsp;month.current</code></td>
             <td>Boolean</td>
             <td></td>
-            <td>Highlights the current month when applicable</td>
+            <td>Highlights the current month when applicable (UTC)</td>
           </tr>
           <tr>
             <td><code>&nbsp;&nbsp;monthDays</code></td>
@@ -309,7 +309,7 @@
             <td><code>&nbsp;&nbsp;&nbsp;&nbsp;day.current</code></td>
             <td>Boolean</td>
             <td></td>
-            <td>Highlights the current day when applicable</td>
+            <td>Highlights the current day when applicable (UTC)</td>
           </tr>
           <tr>
             <td><code>&nbsp;&nbsp;&nbsp;&nbsp;day.holiday</code></td>
