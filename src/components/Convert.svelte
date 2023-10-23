@@ -25,20 +25,23 @@
 
   { #if converted }
     <div transition:slide>
-      <p>{converted.body.fullDate}</p>
-      { #if help }
-        <p class="help" transition:slide>weekday day month year</p>
-      { /if }
-      <p>{converted.body.shortDate}</p>
-      { #if help }
-        <p class="help" transition:slide>YYYY-MM-DD</p>
-      { /if }
-      { #if converted.body.holiday }
-        <p class="holiday">{ converted.body.holiday }</p>
+      { #if converted.body }
+        <p>{converted.body.fullDate}</p>
+        { #if help }
+          <p class="help" transition:slide>weekday day month year</p>
+        { /if }
+        <p>{converted.body.shortDate}</p>
+        { #if help }
+          <p class="help" transition:slide>YYYY-MM-DD</p>
+        { /if }
+        { #if converted.body.holiday }
+          <p class="holiday">{ converted.body.holiday }</p>
+        { /if }
+        <span class="help__marker"><input type="checkbox" bind:checked={help}/></span>
+      { :else }
+        <p>There was an error</p>
       { /if }
     </div>
-
-    <span class="help__marker"><input type="checkbox" bind:checked={help}/></span>
   { /if }
 </section>
 

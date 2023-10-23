@@ -7,13 +7,8 @@
 
 <div class="container">
   <main>
-    <div>
-      <p>Today is...</p>
-      <Today />
-    </div>
-  
+    <Today />
     <Convert />
-
     <Calendar />
   </main>
   <aside>

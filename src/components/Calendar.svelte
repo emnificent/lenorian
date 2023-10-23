@@ -43,83 +43,93 @@
 <article>
   <div class="header">
     <h2>Calendar</h2>
-    <p>Year {calendar?.body.year.value} {calendar?.body.year.leapYear ? '(leap)': ''}</p>
-  </div>
-
-  <div class="calendar" id="calendar">
-    { #if calendar?.body }  
-      { #each calendar.body.months as monthContainer }
-        <section>
-          <h3>{ monthContainer.month.name }</h3>
-          <table>
-            <thead>
-              <th>P</th>
-              <th>S</th>
-              <th>T</th>
-              <th>Q</th>
-              <th>C</th>
-              <th>S</th>
-              <th>S</th>
-              <th>O</th>
-            </thead>
-            <tr>
-              { #each Array.from({ length: monthContainer.monthDays[0].weekday.index }) as empty }
-                <td></td>
-              { /each }
-
-              { #each Array.from({ length: 8 - monthContainer.monthDays[0].weekday.index }, (value, index) => index) as index }
-                <td class="{ monthContainer.monthDays[0 + index].day.holidays ? 'holiday' : '' }"
-                  title="{ monthContainer.monthDays[0 + index].day.holidays }">
-
-                    { monthContainer.monthDays[0 + index].day.value }
-                </td>
-              { /each }
-            </tr>
-            <tr>
-              { #each Array.from({ length: 8 }, (value, index) => index) as index }
-                <td class="{ monthContainer.monthDays[(8 - monthContainer.monthDays[0].weekday.index) + index].day.holidays ? 'holiday' : '' }"
-                  title="{ monthContainer.monthDays[(8 - monthContainer.monthDays[0].weekday.index) + index].day.holidays }">
-
-                    { monthContainer.monthDays[(8 - monthContainer.monthDays[0].weekday.index) + index].day.value }
-                </td>
-              { /each }
-            </tr>
-            <tr>
-              { #each Array.from({ length: 8 }, (value, index) => index) as index }
-                <td class="{ monthContainer.monthDays[(16 - monthContainer.monthDays[0].weekday.index) + index].day.holidays ? 'holiday' : '' }"
-                  title="{ monthContainer.monthDays[(16 - monthContainer.monthDays[0].weekday.index) + index].day.holidays }">
-
-                    { monthContainer.monthDays[(16 - monthContainer.monthDays[0].weekday.index) + index].day.value }
-                </td>
-              { /each }
-            </tr>
-            <tr>
-              { #each Array.from({ length: 8 }, (value, index) => index) as index }
-                <td class="{ monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]?.day.holidays ? 'holiday' : '' }"
-                  title="{ monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]?.day.holidays }">{
-
-                    monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]
-                      ? monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]?.day.value 
-                      : ''
-                }</td>
-              { /each }
-            </tr>
-            <tr>
-              { #each Array.from({ length: 8 }, (value, index) => index) as index }
-                <td class="{ monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]?.day.holidays ? 'holiday' : '' }"
-                  title="{ monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]?.day.holidays }">{
-
-                    monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]
-                      ? monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]?.day.value 
-                      : ''
-                }</td>
-              { /each }
-            </tr>
-          </table>
-        </section>
-      { /each }
+    { #if calendar }
+      { #if calendar.body }
+        <p>Year {calendar.body.year.value} {calendar.body.year.leapYear ? '(leap)': ''}</p>
+      { /if }
+    { :else }
+      <p>Loading...</p>
     { /if }
   </div>
+
+  { #if calendar }
+    <div class="calendar" id="calendar">
+      { #if calendar.body }  
+        { #each calendar.body.months as monthContainer }
+          <section>
+            <h3>{ monthContainer.month.name }</h3>
+            <table>
+              <thead>
+                <th>P</th>
+                <th>S</th>
+                <th>T</th>
+                <th>Q</th>
+                <th>C</th>
+                <th>S</th>
+                <th>S</th>
+                <th>O</th>
+              </thead>
+              <tr>
+                { #each Array.from({ length: monthContainer.monthDays[0].weekday.index }) as empty }
+                  <td></td>
+                { /each }
+
+                { #each Array.from({ length: 8 - monthContainer.monthDays[0].weekday.index }, (value, index) => index) as index }
+                  <td class="{ monthContainer.monthDays[0 + index].day.holidays ? 'holiday' : '' }"
+                    title="{ monthContainer.monthDays[0 + index].day.holidays }">
+
+                      { monthContainer.monthDays[0 + index].day.value }
+                  </td>
+                { /each }
+              </tr>
+              <tr>
+                { #each Array.from({ length: 8 }, (value, index) => index) as index }
+                  <td class="{ monthContainer.monthDays[(8 - monthContainer.monthDays[0].weekday.index) + index].day.holidays ? 'holiday' : '' }"
+                    title="{ monthContainer.monthDays[(8 - monthContainer.monthDays[0].weekday.index) + index].day.holidays }">
+
+                      { monthContainer.monthDays[(8 - monthContainer.monthDays[0].weekday.index) + index].day.value }
+                  </td>
+                { /each }
+              </tr>
+              <tr>
+                { #each Array.from({ length: 8 }, (value, index) => index) as index }
+                  <td class="{ monthContainer.monthDays[(16 - monthContainer.monthDays[0].weekday.index) + index].day.holidays ? 'holiday' : '' }"
+                    title="{ monthContainer.monthDays[(16 - monthContainer.monthDays[0].weekday.index) + index].day.holidays }">
+
+                      { monthContainer.monthDays[(16 - monthContainer.monthDays[0].weekday.index) + index].day.value }
+                  </td>
+                { /each }
+              </tr>
+              <tr>
+                { #each Array.from({ length: 8 }, (value, index) => index) as index }
+                  <td class="{ monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]?.day.holidays ? 'holiday' : '' }"
+                    title="{ monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]?.day.holidays }">{
+
+                      monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]
+                        ? monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]?.day.value 
+                        : ''
+                  }</td>
+                { /each }
+              </tr>
+              <tr>
+                { #each Array.from({ length: 8 }, (value, index) => index) as index }
+                  <td class="{ monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]?.day.holidays ? 'holiday' : '' }"
+                    title="{ monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]?.day.holidays }">{
+
+                      monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]
+                        ? monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]?.day.value 
+                        : ''
+                  }</td>
+                { /each }
+              </tr>
+            </table>
+          </section>
+        { /each }
+      { :else }
+        <p>There was an error</p>
+      { /if }
+    </div>
+  { /if }
 </article>
 
 <style lang="scss">

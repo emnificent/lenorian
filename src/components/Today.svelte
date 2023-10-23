@@ -12,20 +12,31 @@
   let help = false;
 </script>
 
-<article>
-  <h2>{today?.body.fullDate}</h2>
-  { #if help }
-    <p class="help" transition:slide>weekday day month year</p>
-  { /if }
-  <p>{today?.body.shortDate}</p>
-  { #if help }
-    <p class="help" transition:slide>YYYY-MM-DD</p>
-  { /if }
-  { #if today?.body.holiday }
-    <p class="holiday">{ today.body.holiday }</p>
-  { /if }
-  <span class="help__marker"><input type="checkbox" bind:checked={help}/></span>
-</article>
+<div>
+  <p>Today is...</p>
+  <article>
+    { #if today }
+      { #if today.body }
+        <h2>{today.body.fullDate}</h2>
+        { #if help }
+          <p class="help" transition:slide>weekday day month year</p>
+        { /if }
+        <p>{today.body.shortDate}</p>
+        { #if help }
+          <p class="help" transition:slide>YYYY-MM-DD</p>
+        { /if }
+        { #if today.body.holiday }
+          <p class="holiday">{ today.body.holiday }</p>
+        { /if }
+        <span class="help__marker"><input type="checkbox" bind:checked={help}/></span>
+      { :else }
+        <p>There was an error</p>
+      { /if }
+    { :else }
+      <p>Loading...</p>
+    { /if }
+  </article>
+</div>
 
 <style lang="scss">
   article {
