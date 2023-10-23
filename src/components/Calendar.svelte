@@ -2,25 +2,54 @@
 	import { onMount } from "svelte";
 
   let calendar;
+  let today;
   onMount(async () => {
     const response = await fetch('/api/calendar');
     calendar = await response.json();
+
+    // highlights today
+    const offset = new Date().getTimezoneOffset();
+    const todayResponse = await fetch(`/api/convert?offset=${offset}`);
+    today = await todayResponse.json();
+
+    const months = await document.getElementById('calendar').children;
+    let monthIndex = -1;
+    for (let i = 0; i < months.length; i += 1) {
+      if (months.item(i).firstChild.innerText === today.body.month.name) monthIndex = i;
+      if (monthIndex !== -1) break;
+    }
+
+    months.item(monthIndex).classList.add('current');
+    months.item(monthIndex).id = 'currentMonth';
+
+    const daysRows = await document.getElementById('currentMonth').children.item(1).children;
+    let dayIndex = -1;
+    // skip the first row because it's just letters
+    for (let i = 1; i < daysRows.length; i += 1) {
+      if (dayIndex !== -1) break;
+      const days = daysRows.item(i).children;
+
+      for (let j = 0; j < days.length; j += 1) {
+        if (days.item(j).innerText === today.body.monthDay.value.toString()) dayIndex = { row: i, index: j };
+        if (dayIndex !== -1) break;
+      }
+    }
+
+    daysRows.item(dayIndex.row).children.item(dayIndex.index).classList.add('current');
+    daysRows.item(dayIndex.row).children.item(dayIndex.index).id = 'currentDay';
   });
 </script>
 
 <article>
   <div class="header">
-    <div class="header__title">
-      <h2>Calendar</h2>
-      <p>(UTC)</p>
-    </div>
+    <h2>Calendar</h2>
     <p>Year {calendar?.body.year.value} {calendar?.body.year.leapYear ? '(leap)': ''}</p>
   </div>
 
-  <div class="calendar">
+  <div class="calendar" id="calendar">
     { #if calendar?.body }  
       { #each calendar.body.months as monthContainer }
-        <section class="{ monthContainer.month.current ? 'current' : '' }">
+        <section>
           <h3>{ monthContainer.month.name }</h3>
           <table>
             <thead>
@@ -39,8 +68,7 @@
               { /each }
 
               { #each Array.from({ length: 8 - monthContainer.monthDays[0].weekday.index }, (value, index) => index) as index }
-                <td class="{ monthContainer.monthDays[0 + index].day.current ? 'current' : '' }
-                  { monthContainer.monthDays[0 + index].day.holidays ? 'holiday' : '' }"
+                <td class="{ monthContainer.monthDays[0 + index].day.holidays ? 'holiday' : '' }"
                   title="{ monthContainer.monthDays[0 + index].day.holidays }">
 
                     { monthContainer.monthDays[0 + index].day.value }
@@ -49,8 +77,7 @@
             </tr>
             <tr>
               { #each Array.from({ length: 8 }, (value, index) => index) as index }
-                <td class="{ monthContainer.monthDays[(8 - monthContainer.monthDays[0].weekday.index) + index].day.current ? 'current' : '' }
-                  { monthContainer.monthDays[(8 - monthContainer.monthDays[0].weekday.index) + index].day.holidays ? 'holiday' : '' }"
+                <td class="{ monthContainer.monthDays[(8 - monthContainer.monthDays[0].weekday.index) + index].day.holidays ? 'holiday' : '' }"
                   title="{ monthContainer.monthDays[(8 - monthContainer.monthDays[0].weekday.index) + index].day.holidays }">
 
                     { monthContainer.monthDays[(8 - monthContainer.monthDays[0].weekday.index) + index].day.value }
@@ -59,8 +86,7 @@
             </tr>
             <tr>
               { #each Array.from({ length: 8 }, (value, index) => index) as index }
-                <td class="{ monthContainer.monthDays[(16 - monthContainer.monthDays[0].weekday.index) + index].day.current ? 'current' : '' }
-                  { monthContainer.monthDays[(16 - monthContainer.monthDays[0].weekday.index) + index].day.holidays ? 'holiday' : '' }"
+                <td class="{ monthContainer.monthDays[(16 - monthContainer.monthDays[0].weekday.index) + index].day.holidays ? 'holiday' : '' }"
                   title="{ monthContainer.monthDays[(16 - monthContainer.monthDays[0].weekday.index) + index].day.holidays }">
 
                     { monthContainer.monthDays[(16 - monthContainer.monthDays[0].weekday.index) + index].day.value }
@@ -69,8 +95,7 @@
             </tr>
             <tr>
               { #each Array.from({ length: 8 }, (value, index) => index) as index }
-                <td class="{ monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]?.day.current ? 'current' : '' }
-                  { monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]?.day.holidays ? 'holiday' : '' }"
+                <td class="{ monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]?.day.holidays ? 'holiday' : '' }"
                   title="{ monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]?.day.holidays }">{
 
                     monthContainer.monthDays[(24 - monthContainer.monthDays[0].weekday.index) + index]
@@ -81,8 +106,7 @@
             </tr>
             <tr>
               { #each Array.from({ length: 8 }, (value, index) => index) as index }
-                <td class="{ monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]?.day.current ? 'current' : '' }
-                  { monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]?.day.holidays ? 'holiday' : '' }"
+                <td class="{ monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]?.day.holidays ? 'holiday' : '' }"
                   title="{ monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]?.day.holidays }">{
 
                     monthContainer.monthDays[(32 - monthContainer.monthDays[0].weekday.index) + index]
@@ -118,12 +142,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-
-    & .header__title {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
     }
   }
 
