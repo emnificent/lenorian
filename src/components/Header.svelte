@@ -1,6 +1,10 @@
+<script>
+  import logo from '$lib/images/edited_human_rights_logo.svg'
+</script>
+
 <header>
   <a href="/" class="home">
-    <span class="temporary"></span>
+    <img src="{logo}" alt="modified human rights logo, lenorian calendar logo" />
     <h1>Lenorian calendar</h1>
   </a>
   <nav>
@@ -22,6 +26,11 @@
       line-height: 1;
     }
 
+    & img {
+      width: 4rem;
+      aspect-ratio: 1/1;
+    }
+
     & .home {
       display: flex;
       gap: 1rem;
@@ -32,14 +41,6 @@
       @media (prefers-color-scheme: dark) {
         color: var(--c-light);
       }
-    }
-
-    & .temporary {
-      display: block;
-      width: 4rem;
-      aspect-ratio: 1/1;
-      background-color: var(--c-secondary--dark);
-      border-radius: 50%;
     }
 
     & nav {
