@@ -180,7 +180,8 @@ export function GET({ url }) {
   if (timezoneOffset && isNaN(timezoneOffset)) {
     throw error(400, {
       status: 400,
-      message: 'Invalid timezone offset format, must be an integer'
+      message: 'Invalid timezone offset format, must be an integer',
+      ok: false
     });
   }
 
@@ -188,7 +189,8 @@ export function GET({ url }) {
   if (dateTimestamp && isNaN(dateTimestamp)) {
     throw error(400, {
       status: 400,
-      message: 'Invalid time format, must be an integer'
+      message: 'Invalid time format, must be an integer',
+      ok: false
     });
   }
 
@@ -197,7 +199,8 @@ export function GET({ url }) {
     (!gregorianDate.match(/^\d{4,}-\d{2}-\d{2}$/) || new Date(gregorianDate).toString() === 'Invalid Date')) {
       throw error(400, {
         status: 400,
-        message: 'Invalid gdate format, must be YYYY-MM-DD'
+        message: 'Invalid gdate format, must be YYYY-MM-DD',
+        ok: false
       });
   }
 
@@ -232,5 +235,5 @@ export function GET({ url }) {
     yearDay,
   }
 
-  return json({ status: 200, message: 'OK', body });
+  return json({ status: 200, message: 'OK', ok: true, body });
 }

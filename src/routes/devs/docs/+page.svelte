@@ -21,6 +21,7 @@
 <pre><code>{`{
   "status": 200,
   "message": "OK",
+  "ok": true,
   "body": {
     "timezone": "utc",
     "year": {
@@ -186,6 +187,7 @@
 <pre><code>{`{
   "status": 200,
   "message": "OK",
+  "ok": true,
   "body": {
     "year": {
       "value": 0,

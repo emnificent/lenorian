@@ -106,7 +106,8 @@ export async function GET({ url }) {
   if (yearParam && isNaN(yearParam)) {
       throw error(400, {
         status: 400,
-        message: 'Invalid year format, must be an integer'
+        message: 'Invalid year format, must be an integer',
+        ok: false
       });
   }
 
@@ -131,5 +132,5 @@ export async function GET({ url }) {
     months,
   };
 
-  return json({ status: 200, message: 'OK', body });
+  return json({ status: 200, message: 'OK', ok: true, body });
 }
