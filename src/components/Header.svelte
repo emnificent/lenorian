@@ -9,7 +9,7 @@
   </a>
   <nav>
     <a href="/contact">Feedback</a>
-    <a href="/developers">Developers</a>
+    <a href="/devs">Developers</a>
   </nav>
 </header>
 
