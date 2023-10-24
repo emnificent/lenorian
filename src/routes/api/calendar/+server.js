@@ -132,5 +132,11 @@ export async function GET({ url }) {
     months,
   };
 
-  return json({ status: 200, message: 'OK', ok: true, body });
+  const options = {
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
+  }
+
+  return json({ status: 200, message: 'OK', ok: true, body }, options);
 }
