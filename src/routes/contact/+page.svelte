@@ -33,14 +33,21 @@
     </li>
 
     <li>
-      <h2>GitHub (soon)</h2>
-      <p>Open an issue to request API access</p>
-      <p>If you have knowledge in SvelteKit feel free to contribute</p>
+      <h2>GitHub</h2>
+      <p>(link coming soon)</p>
+      <div class="dimmed">
+        <p>Open an issue to request API access</p>
+        <p>If you have knowledge in SvelteKit feel free to contribute</p>
+      </div>
     </li>
   </ul>
 </main>
 
 <style lang="scss">
+  .dimmed {
+    opacity: 0.5;
+  }
+
   main {
     padding-block: 2rem;
     display: flex;

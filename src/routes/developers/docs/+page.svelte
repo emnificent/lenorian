@@ -292,7 +292,7 @@
             <td><code>&nbsp;&nbsp;month.current</code></td>
             <td>Boolean</td>
             <td></td>
-            <td>Highlights the current month when applicable (UTC)</td>
+            <td>Highlight the current month when applicable (UTC)</td>
           </tr>
           <tr>
             <td><code>&nbsp;&nbsp;monthDays</code></td>
@@ -314,7 +314,7 @@
             <td><code>&nbsp;&nbsp;&nbsp;&nbsp;day.current</code></td>
             <td>Boolean</td>
             <td></td>
-            <td>Highlights the current day when applicable (UTC)</td>
+            <td>Highlight the current day when applicable (UTC)</td>
           </tr>
           <tr>
             <td><code>&nbsp;&nbsp;&nbsp;&nbsp;day.holiday</code></td>
