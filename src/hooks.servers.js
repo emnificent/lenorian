@@ -11,7 +11,7 @@ export async function handle({ resolve, event }) {
       return new Response(null, {
         headers: {
           'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Origin': 'https://emnific.com',
           'Access-Control-Allow-Headers': '*',
         }
       });
@@ -20,7 +20,7 @@ export async function handle({ resolve, event }) {
 
   const response = await resolve(event);
   if (event.url.pathname.startsWith('/api')) {
-    response.headers.append('Access-Control-Allow-Origin', '*');
+    response.headers.append('Access-Control-Allow-Origin', 'https://emnific.com');
   }
   return response;
 };
