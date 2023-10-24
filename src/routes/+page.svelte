@@ -5,6 +5,10 @@
   import Today from "../components/Today.svelte";
 </script>
 
+<svelte:head>
+  <title>Lenorian calendar</title>
+</svelte:head>
+
 <div class="container">
   <main>
     <Today />

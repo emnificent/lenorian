@@ -1,3 +1,9 @@
+<svelte:head>
+  <meta name="robots" content="noindex" />
+  <link href="https://fonts.googleapis.com/css2?family=Fondamento:ital@0;1&display=swap" rel="stylesheet">
+  <title>Lenorian | Human Rights</title>
+</svelte:head>
+
 <main>
   <h2>Universal Declaration of Human Rights</h2>
   <ol>
@@ -32,28 +38,37 @@
     <li>We have a duty to other people and we should protect their rights and freedoms.</li>
     <li>Nobody can take away these rights and freedoms from us.</li>
   </ol>
+  <a href="https://www.un.org/en/about-us/universal-declaration-of-human-rights" target="_blank">Read the full Declaration</a>
 </main>
 
 <style lang="scss">
   main {
-    font-family: 'Great Vibes', cursive;
-    font-size: 1.5rem;
+    font-family: 'Fondamento', cursive;
+    font-size: 1rem;
     margin-block: 2rem;
 
     @media screen and (width >= 992px) {
-      font-size: 3rem;
+      font-size: 2rem;
     }
 
     & h2 {
-      font-size: 2.5rem;
+      font-style: italic;
+      font-size: 2rem;
 
       @media screen and (width >= 992px) {
-        font-size: 5rem;
+        font-size: 4rem;
       }
     }
 
     & ol {
       list-style-position: inside;
+    }
+
+    & a {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      display: inline-block;
+      margin-top: 1rem;
     }
   }
 </style>

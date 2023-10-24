@@ -2,6 +2,11 @@
   export let form;
 </script>
 
+<svelte:head>
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Lenorian | Contact</title>
+</svelte:head>
+
 <main>
   <p>Whether you don't like the week days' or months' names and would like to suggest your own, or you have an idea for a holiday, or something else, reach out:</p>
   

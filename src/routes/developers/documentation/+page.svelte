@@ -1,3 +1,8 @@
+<svelte:head>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <title>Lenorian | API Docs</title>
+</svelte:head>
+
 <main>
   <h2>API Documentation</h2>
   <div>
@@ -367,7 +372,7 @@
     }
 
     & code {
-      font-family: monospace;
+      font-family: 'Fira Code', monospace;
     }
 
     & pre {
