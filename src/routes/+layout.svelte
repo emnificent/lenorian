@@ -1,9 +1,9 @@
 <script>
-  import '../styles/reset.scss';
-  import '../styles/global.scss';
+  import '$lib/styles/reset.scss';
+  import '$lib/styles/global.scss';
 
-  import Header from '../components/Header.svelte';
-	import Footer from '../components/Footer.svelte';
+  import Header from '$lib/components/Header.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 
   import logo from '$lib/images/edited_human_rights_logo.png'
 </script>

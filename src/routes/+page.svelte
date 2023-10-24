@@ -1,8 +1,8 @@
 <script>
-	import About from "../components/About.svelte";
-	import Calendar from "../components/Calendar.svelte";
-  import Convert from "../components/Convert.svelte";
-  import Today from "../components/Today.svelte";
+	import About from "$lib/components/About.svelte";
+	import Calendar from "$lib/components/Calendar.svelte";
+  import Convert from "$lib/components/Convert.svelte";
+  import Today from "$lib/components/Today.svelte";
 </script>
 
 <svelte:head>
