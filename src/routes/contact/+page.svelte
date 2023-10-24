@@ -9,35 +9,26 @@
 
 <main>
   <p>Whether you don't like the week days' or months' names and would like to suggest your own, or you have an idea for a holiday, or something else, reach out:</p>
-  
-  <ul>
-    <li>
-      <h2>Message</h2>
-      <form method="POST">
-        <p>Why are you reaching out?</p>
-        <select name="topic" required>
-          <option value="">Choose an option</option>
-          <option value="Week days or months names suggestion">Week days / months names</option>
-          <option value="Holiday suggestion">Suggest a holiday</option>
-          <option value="The app appears to be broken">Something appears broken</option>
-          <option value="Other">Other</option>
-        </select>
-        <textarea name="message" rows="5" placeholder="Your message, be as specific as possible" required></textarea>
-        <button>Send</button>
-        { #if form?.success }
-          <p>Thanks for your message!</p>
-        { :else if form?.error }
-          <p>There was an error, try again later.</p>
-        { /if }
-      </form>
-    </li>
-
-    <li>
-      <h2><a href="https://github.com/emnificent/lenorian" target="_blank">GitHub</a></h2>
-      <p>Open an issue to request API access</p>
-      <p>If you have knowledge in SvelteKit feel free to contribute</p>
-    </li>
-  </ul>
+  <div>
+    <h2>Message</h2>
+    <form method="POST">
+      <p>Why are you reaching out?</p>
+      <select name="topic" required>
+        <option value="">Choose an option</option>
+        <option value="Week days or months names suggestion">Week days / months names</option>
+        <option value="Holiday suggestion">Suggest a holiday</option>
+        <option value="The app appears to be broken">Something appears broken</option>
+        <option value="Other">Other</option>
+      </select>
+      <textarea name="message" rows="5" placeholder="Your message, be as specific as possible" required></textarea>
+      <button>Send</button>
+      { #if form?.success }
+        <p>Thanks for your message!</p>
+      { :else if form?.error }
+        <p>There was an error, try again later.</p>
+      { /if }
+    </form>
+  </div>
 </main>
 
 <style lang="scss">
@@ -48,22 +39,10 @@
     gap: 2rem;
   }
 
-  ul {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    list-style: none;
-
-    @media screen and (width >= 768px) {
-      flex-direction: row;
-      gap: 2rem;
-    }
-
-    & h2 {
-      font-size: calc(var(--fs-title--small) * 1rem);
-      font-weight: var(--fw--bold);
-      margin-bottom: 0.25rem;
-    }
+  h2 {
+    font-size: calc(var(--fs-title--small) * 1rem);
+    font-weight: var(--fw--bold);
+    margin-bottom: 0.25rem;
   }
 
   form {

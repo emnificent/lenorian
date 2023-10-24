@@ -7,7 +7,7 @@
   <h2>API Documentation</h2>
   <div>
     <p>Base URL: <code>/api</code></p>
-    <p>For now the API is accessible through <a href="/contact">request-only</a>, an API key will be required eventually</p>
+    <p style="color:red;">For now the API is open to every requests (<code>v0</code>), an API key will be required eventually (<code>v1</code>), brace for breaking changes</p>
   </div>
   <article>
     <div>
