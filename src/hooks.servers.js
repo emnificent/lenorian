@@ -20,7 +20,7 @@ export async function handle({ resolve, event }) {
 
   const response = await resolve(event);
   if (event.url.pathname.startsWith('/api')) {
-    response.headers.append('Access-Control-Allow-Origin', '*');
+    response.headers.append('Access-Control-Allow-Origin', `*`);
   }
   return response;
 };
