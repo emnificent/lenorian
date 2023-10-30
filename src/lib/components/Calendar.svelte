@@ -60,14 +60,14 @@
             <h3>{ monthContainer.month.name }</h3>
             <table>
               <thead>
-                <th>P</th>
-                <th>S</th>
+                <th>M</th>
+                <th>V</th>
                 <th>T</th>
-                <th>Q</th>
-                <th>C</th>
+                <th>M</th>
+                <th>J</th>
                 <th>S</th>
-                <th>S</th>
-                <th>O</th>
+                <th>U</th>
+                <th>N</th>
               </thead>
               <tr>
                 { #each Array.from({ length: monthContainer.monthDays[0].weekday.index }) as empty }

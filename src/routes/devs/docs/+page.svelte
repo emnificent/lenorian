@@ -31,7 +31,7 @@
     },
     "month": {
       "index": 8,
-      "name": "Treter",
+      "name": "November",
       "value": 9
     },
     "monthDay": {
@@ -40,10 +40,10 @@
     },
     "weekday": {
       "index": 1,
-      "name": "Secundi"
+      "name": "Veneday"
     },
     "shortDate": "0000-09-22",
-    "fullDate": "Secundi 22 Treter 0",
+    "fullDate": "Veneday, 22 November 0",
     "holiday": "Universal Declaration of Human Rights Day",
     "yearDay": 265
   }
@@ -199,7 +199,7 @@
       {
         "month": {
           "index": 8,
-          "name": "Treter",
+          "name": "November",
           "value": 9,
           "current": true
         },
@@ -214,7 +214,7 @@
             },
             "weekday": {
               "index": 1,
-              "name": "Secundi"
+              "name": "Veneday"
             }
           },
           // ...

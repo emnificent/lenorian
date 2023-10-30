@@ -22,7 +22,7 @@ function isLeapYear(year) {
 
 function generateMonths(leapYear) {
   // better name suggestions welcome
-  const monthNames = ['Unisem', 'Unibis', 'Uniter', 'Duosem', 'Duobis', 'Duoter', 'Tresem', 'Trebis', 'Treter', 'Quasem', 'Quabis', 'Quater'];
+  const monthNames = ['Unber', 'Duober', 'Treber', 'Quatober', 'Quinber', 'Sexber', 'September', 'October', 'November', 'December', 'Uncember', 'Duocember'];
   const generatedMonths = [];
 
   for (let monthIndex = 0; monthIndex < monthNames.length; monthIndex += 1) {
@@ -50,7 +50,7 @@ function generateMonthDays(days) {
 
 function appendWeekdays(year, months) {
   // better name suggestions welcome
-  const dayNames = ['Primidi', 'Secundi', 'Tertidi', 'Quartidi', 'Cinqidi', 'Sextidi', 'Septidi', 'Octadi'];
+  const dayNames = ['Mercuday', 'Veneday', 'Terraday', 'Marsiday', 'Jupiday', 'Saturday', 'Uraday', 'Neptiday'];
   let weekdayIndex = getYearFirstWeekday(year, dayNames.length);
 
   months.forEach(month => {

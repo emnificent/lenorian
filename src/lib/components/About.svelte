@@ -11,36 +11,37 @@
   <p>There are 8 days in a week, so it's easier to divide it in two.</p>
 
   <h3>Days and months names</h3>
+  <p>The week days names are based on the planets of our solar system, the months names are based on Latin cardinal numbers.</p>
   <p>Not set in stone, suggest yours through the <a href="/contact">feedback form</a>!</p>
   <div class="about-names">
     <div>
       <h4>Week days:</h4>
       <ol>
-        <li>Primidi</li>
-        <li>Secundi</li>
-        <li>Tertidi</li>
-        <li>Quartidi</li>
-        <li>Cinqidi</li>
-        <li>Sextidi</li>
-        <li>Septidi</li>
-        <li>Octadi</li>
+        <li>Mercuday</li>
+        <li>Veneday</li>
+        <li>Terraday</li>
+        <li>Marsiday</li>
+        <li>Jupiday</li>
+        <li>Saturday</li>
+        <li>Uraday</li>
+        <li>Neptiday</li>
       </ol>
     </div>
     <div>
       <h4>Months:</h4>
       <ol>
-        <li>Unisem</li>
-        <li>Unibis</li>
-        <li>Uniter</li>
-        <li>Duosem</li>
-        <li>Duobis</li>
-        <li>Duoter</li>
-        <li>Tresem</li>
-        <li>Trebis</li>
-        <li>Treter</li>
-        <li>Quasem</li>
-        <li>Quabis</li>
-        <li>Quater</li>
+        <li>Unber</li>
+        <li>Duober</li>
+        <li>Treber</li>
+        <li>Quatober</li>
+        <li>Quinber</li>
+        <li>Sexber</li>
+        <li>September</li>
+        <li>October</li>
+        <li>November</li>
+        <li>December</li>
+        <li>Uncember</li>
+        <li>Duocember</li>
       </ol>
     </div>
   </div>

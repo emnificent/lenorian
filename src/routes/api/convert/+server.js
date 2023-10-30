@@ -83,7 +83,7 @@ function getYearAndYearDay(yearDay) {
 // [0 ; 11]
 function getMonth(yearDay) {
   // better name suggestions welcome
-  const monthNames = ['Unisem', 'Unibis', 'Uniter', 'Duosem', 'Duobis', 'Duoter', 'Tresem', 'Trebis', 'Treter', 'Quasem', 'Quabis', 'Quater'];
+  const monthNames = ['Unber', 'Duober', 'Treber', 'Quatober', 'Quinber', 'Sexber', 'September', 'October', 'November', 'December', 'Uncember', 'Duocember'];
 
   let monthIndex = 0;
   if (yearDay > 29) monthIndex += 1;
@@ -122,7 +122,7 @@ function getMonthDay(monthIndex, monthDayIndex) {
 // [0 ; 7]
 function getWeekday(daysSinceEpoch) {
   // better name suggestions welcome
-  const dayNames = ['Primidi', 'Secundi', 'Tertidi', 'Quartidi', 'Cinqidi', 'Sextidi', 'Septidi', 'Octadi'];
+  const dayNames = ['Mercuday', 'Veneday', 'Terraday', 'Marsiday', 'Jupiday', 'Saturday', 'Uraday', 'Neptiday'];
 
   const weekdayIndex = ((daysSinceEpoch % dayNames.length) + dayNames.length) % dayNames.length;
 
@@ -230,7 +230,7 @@ export function GET({ url }) {
     weekday,
     shortDate: 
       `${negativeDate ? '-' : ''}${formatPadding(year, 4)}-${formatPadding(month.value)}-${formatPadding(monthDay.value)}`,
-    fullDate: `${weekday.name} ${monthDay.value} ${month.name} ${year}`,
+    fullDate: `${weekday.name}, ${monthDay.value} ${month.name} ${year}`,
     holiday,
     yearDay,
   }
