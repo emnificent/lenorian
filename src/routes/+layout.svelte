@@ -5,7 +5,7 @@
   import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 
-  import logo from '$lib/images/edited_human_rights_logo.png'
+  import logo from '$lib/images/human_rights_logo.png'
 </script>
 
 <svelte:head>

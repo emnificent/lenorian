@@ -17,7 +17,12 @@
   <article>
     { #if today }
       { #if today.body }
-        <h2>{today.body.fullDate}</h2>
+        <h2>
+          {today.body.fullDate}
+          <span class="help__marker">
+            <input type="checkbox" bind:checked={help} aria-label="help"/>
+          </span>
+        </h2>
         { #if help }
           <p class="help" transition:slide>weekday day month year</p>
         { /if }
@@ -28,7 +33,6 @@
         { #if today.body.holiday }
           <p class="holiday">{ today.body.holiday }</p>
         { /if }
-        <span class="help__marker"><input type="checkbox" bind:checked={help}/></span>
       { :else }
         <p>There was an error</p>
       { /if }
@@ -40,18 +44,11 @@
 
 <style lang="scss">
   article {
-    background-color: var(--c-primary--light);
-    padding: 1rem;
-    border-radius: 1rem;
-    position: relative;
-
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--c-primary--dark);
-    }
-
     & h2 {
       font-size: calc(var(--fs-title--small) * 1rem);
       font-weight: var(--fw--bold);
+      display: flex;
+      gap: 1rem;
     }
 
     & .holiday {
@@ -61,11 +58,10 @@
   }
 
   .help__marker {
-    position: absolute;
-    display: flex;
-    bottom: 1rem;
-    right: 1rem;
+    position: relative;
     pointer-events: none;
+    display: flex;
+    align-items: center;
 
     & input {
       pointer-events: auto;
@@ -73,10 +69,6 @@
       aspect-ratio: 1/1;
       opacity: 0;
       outline: none;
-
-      &:focus-visible {
-        opacity: 1;
-      }
     }
 
     &::after {
@@ -84,12 +76,13 @@
       display: block;
       position: absolute;
       right: 0;
-      top: 0;
+      top: 5px;
       text-align: center;
       height: 1.5rem;
+      line-height: 1.5rem;
       aspect-ratio: 1/1;
-      border-radius: 50%;
-      background-color:var(--c-secondary--dark);
+      border-radius: 25%;
+      background-color:var(--c-primary--dark);
       color: var(--c-light);
       font-size: calc(var(--fs-text--small) * 1rem);
       transition: all 0.3s;
@@ -98,7 +91,7 @@
     &:hover,
     &:focus-within {
       &::after {
-        background-color: var(--c-secondary--light);
+        background-color: var(--c-primary--light);
         color: var(--c-dark);
       }
     }

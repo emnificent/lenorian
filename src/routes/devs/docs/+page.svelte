@@ -1,5 +1,5 @@
 <svelte:head>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
   <title>Lenorian | API Docs</title>
 </svelte:head>
 
@@ -361,7 +361,8 @@
 
       & .api-verb {
         display: inline-block;
-        background-color: var(--c-secondary--dark);
+        background-color: #61AFFE;
+        font-weight: var(--fw--bold);
         color: var(--c-light);
         padding: 0.125rem 0.5rem;
         border-radius: 0.5rem;
@@ -378,16 +379,11 @@
     }
 
     & pre {
-      background-color: var(--c-primary--light);
-      color: var(--c-dark);
+      background-color: #000000;
+      color: var(--c-light);
       padding: 1rem;
       border-radius: 1rem;
       overflow-x: auto;
-
-      @media (prefers-color-scheme: dark) {
-        background-color: var(--c-primary--dark);
-        color: var(--c-light);
-      }
     }
   }
 
@@ -397,26 +393,18 @@
 
     & table {
       width: 100%;
-      background-color: var(--c-primary--light);
+      background-color: var(--c-dark);
+      color: var(--c-light);
       padding: 1rem;
       border-collapse: collapse;
-
-      @media (prefers-color-scheme: dark) {
-        background-color: var(--c-primary--dark);
-      }
     }
 
     & th {
       text-align: start;
       font-weight: var(--fw--bold);
       text-transform: uppercase;
-      background-color: var(--c-secondary--dark);
-      color: var(--c-light);
+      background-color: var(--c-primary--dark);
       padding: 0.5rem 1rem;
-
-      @media (prefers-color-scheme: dark) {
-        color: var(--c-dark);
-      }
     }
 
     & td {
@@ -424,8 +412,13 @@
       white-space: nowrap;
     }
 
-    & tr:nth-child(odd) {
-      backdrop-filter: invert(5%);
+    & tr {
+      &:nth-child(even) {
+        backdrop-filter: invert(2.5%);
+      }
+      &:nth-child(odd) {
+        backdrop-filter: invert(5%);
+      }
     }
   }
 </style>

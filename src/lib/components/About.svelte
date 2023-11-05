@@ -1,6 +1,6 @@
 <section>
   <h2>About</h2>
-  <p>The first day of the Lenorian calendar is on the 20th of March 1948 (Gregorian calendar), the spring equinox, the year of the <a href="/human-rights">Universal Declaration of Human Rights</a>. The calendar celebrates and promotes Human Rights, it uses a modified version of the <a href="https://en.wikipedia.org/wiki/Human_Rights_Logo" target="_blank">Human Rights logo</a> for its identity.</p>
+  <p>The first day of the Lenorian calendar is on the 20th of March 1948 (Gregorian calendar), the spring equinox, the year of the <a href="/human-rights">Universal Declaration of Human Rights</a>. The calendar celebrates and promotes Human Rights, it uses the <a href="https://en.wikipedia.org/wiki/Human_Rights_Logo" target="_blank">Human Rights logo</a> for its identity.</p>
 
   <h3>Leap years rule</h3>
   <p>Each year is made out of 365 days, except for leap years that have one extra day added to the end of the last month of the year.</p>

@@ -1,5 +1,5 @@
 <script>
-  import logo from '$lib/images/edited_human_rights_logo.svg'
+  import logo from '$lib/images/human_rights_logo.svg'
 </script>
 
 <header>

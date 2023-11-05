@@ -49,14 +49,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    background-color: var(--c-primary--light);
-    padding: 1rem;
-    border-radius: 1rem;
     max-width: 23rem;
-
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--c-primary--dark);
-    }
 
     & select,
     & textarea,
@@ -72,6 +65,7 @@
     & input {
       background-color: var(--c-light);
       color: var(--c-dark);
+      box-shadow: inset 0 0 0 0.125rem var(--c-primary--dark);
 
       &::placeholder {
         color: var(--c-dark);
@@ -88,11 +82,11 @@
       }
 
       &:focus-visible {
-        outline: var(--c-secondary--dark) 2px solid;
+        outline: var(--c-primary--dark) 2px solid;
         border-radius: 0.25rem;
 
 		    @media (prefers-color-scheme: dark) {
-			    outline-color: var(--c-secondary--light);
+			    outline-color: var(--c-primary--light);
 		    }
       }
     }
@@ -102,13 +96,13 @@
     }
 
     & button {
-      background-color: var(--c-secondary--dark);
+      background-color: var(--c-primary--dark);
       color: var(--c-light);
       transition: background-color 0.3s, color 0.3s;
 
       &:hover,
       &:focus-visible {
-        background-color: var(--c-secondary--light);
+        background-color: var(--c-primary--light);
         color: var(--c-dark);
       }
 

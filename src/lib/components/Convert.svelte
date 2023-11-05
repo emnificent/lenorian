@@ -26,7 +26,12 @@
   { #if converted }
     <div transition:slide>
       { #if converted.body }
-        <p>{converted.body.fullDate}</p>
+        <p class="converted__fulldate">
+          {converted.body.fullDate} 
+          <span class="help__marker">
+            <input type="checkbox" bind:checked={help} aria-label="help"/>
+          </span>
+        </p>
         { #if help }
           <p class="help" transition:slide>weekday day month year</p>
         { /if }
@@ -37,7 +42,6 @@
         { #if converted.body.holiday }
           <p class="holiday">{ converted.body.holiday }</p>
         { /if }
-        <span class="help__marker"><input type="checkbox" bind:checked={help}/></span>
       { :else }
         <p>There was an error</p>
       { /if }
@@ -47,17 +51,10 @@
 
 <style lang="scss">
   section {
-    background-color: var(--c-primary--light);
-    padding: 1rem;
-    border-radius: 1rem;
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--c-primary--dark);
-    }
 
     & h2 {
       font-size: calc(var(--fs-title--small) * 1rem);
@@ -81,6 +78,7 @@
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
       border: none;
+      box-shadow: inset 0 0 0 0.125rem var(--c-primary--dark);
 
       @media (prefers-color-scheme: dark) {
         background-color: var(--c-dark);
@@ -88,17 +86,17 @@
       }
 
       &:focus-visible {
-        outline: var(--c-secondary--dark) 2px solid;
+        outline: var(--c-primary--dark) 2px solid;
         border-radius: 0.25rem;
 
 		    @media (prefers-color-scheme: dark) {
-			    outline-color: var(--c-secondary--light);
+			    outline-color: var(--c-primary--light);
 		    }
       }
     }
 
     & button {
-      background-color: var(--c-secondary--dark);
+      background-color: var(--c-primary--dark);
       color: var(--c-light);
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
@@ -107,7 +105,7 @@
 
       &:hover,
       &:focus-visible {
-        background-color: var(--c-secondary--light);
+        background-color: var(--c-primary--light);
         color: var(--c-dark);
       }
 
@@ -123,23 +121,21 @@
     }
   }
 
-  .help__marker {
-    position: absolute;
+  .converted__fulldate {
     display: flex;
-    bottom: 1rem;
-    right: 1rem;
+    gap: 1rem;
+  }
+
+  .help__marker {
+    position: relative;
     pointer-events: none;
 
     & input {
       pointer-events: auto;
-      width: 1.5rem;
+      width: 1.25rem;
       aspect-ratio: 1/1;
       opacity: 0;
       outline: none;
-
-      &:focus-visible {
-        opacity: 1;
-      }
     }
 
     &::after {
@@ -147,12 +143,13 @@
       display: block;
       position: absolute;
       right: 0;
-      top: 0;
+      top: 5px;
       text-align: center;
-      height: 1.5rem;
+      height: 1.25rem;
+      line-height: 1.25rem;
       aspect-ratio: 1/1;
-      border-radius: 50%;
-      background-color:var(--c-secondary--dark);
+      border-radius: 25%;
+      background-color:var(--c-primary--dark);
       color: var(--c-light);
       font-size: calc(var(--fs-text--small) * 1rem);
       transition: all 0.3s;
@@ -161,7 +158,7 @@
     &:hover,
     &:focus-within {
       &::after {
-        background-color: var(--c-secondary--light);
+        background-color: var(--c-primary--light);
         color: var(--c-dark);
       }
     }

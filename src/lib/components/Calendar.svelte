@@ -134,15 +134,6 @@
 
 <style lang="scss">
   article {
-    background-color: var(--c-primary--light);
-    padding: 1rem;
-    border-radius: 1rem;
-    position: relative;
-
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--c-primary--dark);
-    }
-
     & h2 {
       font-size: calc(var(--fs-title--small) * 1rem);
       font-weight: var(--fw--bold);
@@ -160,7 +151,7 @@
     grid-template: auto / 1fr;
     gap: 1rem;
     justify-items: center;
-    padding: 0.5rem;
+    padding-top: 0.5rem;
 
     @media screen and (width >= 768px) {
       grid-template: auto / repeat(2, 1fr);
@@ -175,7 +166,7 @@
       border-radius: 1rem;
       
       &.current {
-        box-shadow: inset 0 0 0 0.125rem var(--c-secondary--dark);
+        box-shadow: inset 0 0 0 0.125rem var(--c-primary--dark);
 
         & h3 {
           font-weight: var(--fw--bold);
@@ -189,7 +180,7 @@
 
     & th,
     & td {
-      padding-inline: 1px;
+      padding-inline: 0.125rem;
     }
 
     & th { 
@@ -200,11 +191,11 @@
       text-align: center;
 
       &.holiday {
-        color: var(--c-secondary--dark);
+        color: var(--c-primary--dark);
         font-weight: var(--fw--bold);
 
         @media (prefers-color-scheme: dark) {
-          color: var(--c-secondary--light);
+          color: var(--c-primary--light);
         }
       }
 
@@ -223,13 +214,13 @@
           aspect-ratio: 1/1;
           z-index: -1;
           border-radius: 1rem;
-          background-color: var(--c-secondary--light);
+          background-color: var(--c-primary--light);
           filter: blur(0.5rem);
         }
 
         @media (prefers-color-scheme: dark) {
           &::before {
-            background-color: var(--c-secondary--dark);
+            background-color: var(--c-primary--dark);
           }
         }
       }

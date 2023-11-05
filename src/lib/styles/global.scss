@@ -7,6 +7,8 @@
 	--c-primary--dark: hsl(25, 50%, 15%);
 	--c-secondary--dark: hsl(150, 45%, 40%);
 	--c-secondary--light: hsl(150, 45%, 60%);
+	--c-primary--light: hsl(198, 100%, 43%);
+	--c-primary--dark: hsl(198, 100%, 30%);
 	--c-light: hsl(0, 0%, 91%);
 	--c-dark: hsl(0, 0%, 9%);
 
@@ -52,19 +54,19 @@ body {
 }
 
 a {
-	color: var(--c-secondary--dark);
+	color: var(--c-primary--dark);
 	text-decoration-color: transparent;
 
 	@media (prefers-color-scheme: dark) {
-		color: var(--c-secondary--light);
+		color: var(--c-primary--light);
 	}
 
 	&:hover,
 	&:focus {
-		text-decoration-color: var(--c-secondary--dark);
+		text-decoration-color: var(--c-primary--dark);
 
 		@media (prefers-color-scheme: dark) {
-			text-decoration-color: var(--c-secondary--light);
+			text-decoration-color: var(--c-primary--light);
 		}
 	}
 

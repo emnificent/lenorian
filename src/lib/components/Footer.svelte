@@ -68,10 +68,10 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    background-color: var(--c-secondary--light);
+    background-color: var(--c-primary--light);
 
     @media (prefers-color-scheme: dark) {
-      background-color: var(--c-secondary--dark);
+      background-color: var(--c-primary--dark);
     }
 
     /* make the footer color fill the page horizontally */
