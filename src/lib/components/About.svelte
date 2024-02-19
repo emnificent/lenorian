@@ -10,6 +10,10 @@
   <p>There are 12 months of 30 or 31 days, the first month has 30 days, the second 31, alternating this way until the last month that has either 30 or 31 days.</p>
   <p>There are 8 days in a week, so it's easier to divide it in two.</p>
 
+  <h3>Work week recommendations</h3>
+  <p>A 4-days work week followed by a weekend of 4 days, no more than 8h of work per day.</p>
+  <p>Leisure is a human right!</p>
+
   <h3>Days and months names</h3>
   <p>The week days names are based on the planets of our solar system, the months names are based on Latin cardinal numbers.</p>
   <p>Not set in stone, suggest yours through the <a href="/contact">feedback form</a>!</p>
