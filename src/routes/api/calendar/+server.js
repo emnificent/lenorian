@@ -22,7 +22,7 @@ function isLeapYear(year) {
 
 function generateMonths(leapYear) {
   // better name suggestions welcome
-  const monthNames = ['Unber', 'Duober', 'Treber', 'Quatober', 'Quinber', 'Sexber', 'September', 'October', 'November', 'December', 'Uncember', 'Duocember'];
+  const monthNames = ['Uniber', 'Duober', 'Trember', 'Quatober', 'Quintember', 'Sextober', 'September', 'October', 'November', 'December', 'Unicember', 'Duocember'];
   const generatedMonths = [];
 
   for (let monthIndex = 0; monthIndex < monthNames.length; monthIndex += 1) {

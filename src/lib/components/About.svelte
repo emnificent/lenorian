@@ -30,17 +30,17 @@
     <div>
       <h4>Months:</h4>
       <ol>
-        <li>Unber</li>
+        <li>Uniber</li>
         <li>Duober</li>
-        <li>Treber</li>
+        <li>Trember</li>
         <li>Quatober</li>
-        <li>Quinber</li>
-        <li>Sexber</li>
+        <li>Quintember</li>
+        <li>Sextober</li>
         <li>September</li>
         <li>October</li>
         <li>November</li>
         <li>December</li>
-        <li>Uncember</li>
+        <li>Unicember</li>
         <li>Duocember</li>
       </ol>
     </div>

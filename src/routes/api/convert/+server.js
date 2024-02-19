@@ -83,7 +83,7 @@ function getYearAndYearDay(yearDay) {
 // [0 ; 11]
 function getMonth(yearDay) {
   // better name suggestions welcome
-  const monthNames = ['Unber', 'Duober', 'Treber', 'Quatober', 'Quinber', 'Sexber', 'September', 'October', 'November', 'December', 'Uncember', 'Duocember'];
+  const monthNames = ['Uniber', 'Duober', 'Trember', 'Quatober', 'Quintember', 'Sextober', 'September', 'October', 'November', 'December', 'Unicember', 'Duocember'];
 
   let monthIndex = 0;
   if (yearDay > 29) monthIndex += 1;
