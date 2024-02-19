@@ -142,13 +142,34 @@ function isLeapYear(year) {
 function getHoliday(month, day, leapYear) {
   const holidays = {
     month0: {
-      day0: ['New Year\'s Day']
+      day0: ['New Year\'s Day'],
+      day2: ['Water Day'],
+      day18: ['Health Day']
     },
     month1: {
+      day3: ['Nature Day'],
       day11: ['Labor Day']
     },
+    month2: {
+      day2: ['Biological Diversity Day']
+    },
+    month3: {
+      day11: ['LGBTQ+ Day']
+    },
+    month4: {
+      day17: ['Social Workers\' Day']
+    },
+    month5: {
+      day27: ['Democracy Day']
+    },
     month6: {
-      day2: ['World Peace Day']
+      day2: ['World Peace Day'],
+      day27: ['Farmers\' Day']
+    },
+    month7: {
+      day14: ['Journalists\' Day'],
+      day22: ['Science Day'],
+      day28: ['Tolerance Day']
     },
     month8: {
       day21: ['Universal Declaration of Human Rights Day']
@@ -157,9 +178,11 @@ function getHoliday(month, day, leapYear) {
       day2: ['Gratitude Day']
     },
     month10: {
-      day25: ['Love Day']
+      day13: ['First Responders\' Day']
     },
     month11: {
+      day13: ['World Wildlife Day'],
+      day18: ['Women\'s Day'],
       day30: ['New Year\'s Eve']
     }
   };
