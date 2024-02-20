@@ -2,6 +2,7 @@
 
 <style>
   p {
+	  font-family: 'Poppins', 'Noto Color Emoji', sans-serif;
     text-align: center;
     margin-top: 1rem;
     font-size: 1.5rem;
