@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-  <meta name="description" content="The Lenorian calendar is more than just a way to track time — it's a celebration of human rights!" />
+  <meta name="description" content="The Lenorian calendar is a Human Rights calendar! Starting in 1948, the year of the Universal Declaration of Human Rights, its goals are to promote human rights and to serve as a reminder that human rights are still flouted every day by states and corporations alike." />
   <meta property="og:image" content="{logo}" />
 </svelte:head>
 
